@@ -1,10 +1,18 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiPlay } from 'react-icons/fi';
 
 const Video = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+  const mainVideoId = "MmeehCjBxHs";
+  const thumbnailUrl = `https://img.youtube.com/vi/${mainVideoId}/maxresdefault.jpg`;
+
+  const handlePlayClick = () => {
+    setIsPlaying(true);
+  };
 
   return (
     <section className="py-20 md:py-32 bg-gradient-to-b from-cinza-suave to-white">
@@ -26,6 +34,64 @@ const Video = () => {
           </p>
         </motion.div>
 
+        {/* Main Video Container */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative max-w-5xl mx-auto mb-16"
+        >
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-black aspect-video">
+            {!isPlaying ? (
+              <>
+                {/* Thumbnail */}
+                <img
+                  src={thumbnailUrl}
+                  alt="História de Rafael"
+                  className="w-full h-full object-cover"
+                />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+
+                {/* Play Button */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handlePlayClick}
+                  className="absolute inset-0 flex items-center justify-center group"
+                >
+                  <div className="w-20 h-20 md:w-24 md:h-24 bg-white/90 rounded-full flex items-center justify-center shadow-2xl group-hover:bg-white transition-all">
+                    <FiPlay className="text-4xl md:text-5xl text-azul-horizonte ml-2" />
+                  </div>
+                </motion.button>
+
+                {/* Video Info */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-2 text-shadow-lg">
+                    A História Completa de Rafael
+                  </h3>
+                  <p className="text-white/80 text-shadow">
+                    Documentário sobre a jornada de superação e esperança
+                  </p>
+                </div>
+              </>
+            ) : (
+              /* YouTube Iframe */
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${mainVideoId}?autoplay=1&rel=0&modestbranding=1`}
+                title="História de Rafael Regis"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+              />
+            )}
+          </div>
+        </motion.div>
+
         {/* Videos Grid */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -34,7 +100,7 @@ const Video = () => {
           className="mt-16 md:mt-20"
         >
           <h3 className="text-2xl md:text-3xl font-serif font-bold text-center text-preto-suave mb-10">
-            Mais Momentos da Jornada
+            Outros Vídeos Importantes
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
