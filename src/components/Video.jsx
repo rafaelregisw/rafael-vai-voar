@@ -12,8 +12,15 @@ const Video = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
+  // Função para obter thumbnail com fallback
+  const getThumbnailUrl = (videoId, quality = 'maxresdefault') => {
+    // Tenta múltiplas qualidades de thumbnail
+    // maxresdefault > hqdefault > mqdefault > default
+    return `https://img.youtube.com/vi/${videoId}/${quality}.jpg`;
+  };
+
   const mainVideoId = "MmeehCjBxHs";
-  const thumbnailUrl = `https://img.youtube.com/vi/${mainVideoId}/maxresdefault.jpg`;
+  const thumbnailUrl = getThumbnailUrl(mainVideoId, 'maxresdefault');
 
   const handlePlayClick = () => {
     setIsPlaying(true);
@@ -36,8 +43,8 @@ const Video = () => {
     {
       key: 'cirurgia',
       id: 'gtqN2V_DO_o',
-      title: 'Cirurgia nos EUA',
-      description: 'Depoimento emocionante'
+      title: 'Reportagem no Domingo Espetacular',
+      description: 'Depoimento sobre a cirurgia nos EUA'
     },
     {
       key: 'simuladores',
@@ -151,9 +158,17 @@ const Video = () => {
                     <>
                       {/* Thumbnail */}
                       <img
-                        src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                        src={getThumbnailUrl(video.id, video.key === 'cirurgia' ? 'hqdefault' : 'maxresdefault')}
                         alt={video.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        onError={(e) => {
+                          // Fallback para qualidade menor se a imagem não carregar
+                          if (e.target.src.includes('maxresdefault')) {
+                            e.target.src = getThumbnailUrl(video.id, 'hqdefault');
+                          } else if (e.target.src.includes('hqdefault')) {
+                            e.target.src = getThumbnailUrl(video.id, 'mqdefault');
+                          }
+                        }}
                       />
 
                       {/* Overlay */}
