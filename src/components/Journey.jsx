@@ -9,7 +9,7 @@ const locations = [
     emoji: '🇧🇷',
     description: '100+ médicos consultados, zero diagnóstico',
     detail: 'Durante 10 anos, Rafael percorreu hospitais e clínicas por todo o Brasil. Nenhum médico conseguiu diagnosticar sua condição rara.',
-    position: { top: '65%', left: '35%' },
+    position: { x: 35, y: 70 }, // Percentual position on map
     color: 'from-green-500 to-yellow-500'
   },
   {
@@ -18,7 +18,7 @@ const locations = [
     emoji: '🇩🇪',
     description: 'Dr. Sudhoff - A primeira esperança',
     detail: 'Em Bielefeld, Alemanha, o Dr. Sudhoff foi o primeiro a identificar corretamente a neuralgia do nervo intermédio e propor um tratamento.',
-    position: { top: '30%', left: '52%' },
+    position: { x: 51, y: 25 },
     color: 'from-red-500 to-yellow-500'
   },
   {
@@ -27,7 +27,7 @@ const locations = [
     emoji: '🇺🇸',
     description: 'UConn Health - A cirurgia salvadora',
     detail: 'Na Universidade de Connecticut, a equipe médica realizou a cirurgia complexa que finalmente libertou Rafael de uma década de dor.',
-    position: { top: '40%', left: '25%' },
+    position: { x: 22, y: 35 },
     color: 'from-blue-500 to-red-500'
   },
   {
@@ -36,7 +36,7 @@ const locations = [
     emoji: '🇺🇳',
     description: 'Voz global pelos pacientes com dor',
     detail: 'Rafael levou sua história à ONU, defendendo políticas públicas globais para pacientes com doenças raras e dor crônica extrema.',
-    position: { top: '42%', left: '23%' },
+    position: { x: 26, y: 32 },
     color: 'from-blue-600 to-blue-400'
   }
 ];
@@ -74,109 +74,159 @@ const Journey = () => {
           className="relative max-w-6xl mx-auto"
         >
           {/* World Map Background */}
-          <div className="relative bg-gradient-to-br from-azul-ceu/20 to-azul-horizonte/20 rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden">
-            {/* Decorative World Map SVG */}
+          <div className="relative bg-gradient-to-br from-azul-ceu/20 to-azul-horizonte/20 rounded-3xl p-4 md:p-8 shadow-2xl overflow-hidden">
+            {/* World Map SVG */}
             <svg
               viewBox="0 0 1000 500"
-              className="w-full h-auto opacity-20"
+              className="w-full h-auto"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M 150,250 Q 200,200 250,250 T 350,250 Q 400,200 450,250 T 550,250 Q 600,200 650,250 T 750,250 Q 800,200 850,250"
-                stroke="#5B9BD5"
-                strokeWidth="2"
-                fill="none"
-                className="animate-pulse"
-              />
-              {/* Simplified world map paths */}
-              <ellipse cx="500" cy="250" rx="450" ry="200" fill="none" stroke="#87CEEB" strokeWidth="1" opacity="0.3" />
-              <ellipse cx="500" cy="250" rx="350" ry="150" fill="none" stroke="#87CEEB" strokeWidth="1" opacity="0.3" />
-              <ellipse cx="500" cy="250" rx="250" ry="100" fill="none" stroke="#87CEEB" strokeWidth="1" opacity="0.3" />
-            </svg>
+              {/* Water/Ocean Background */}
+              <rect x="0" y="0" width="1000" height="500" fill="#E0F4FD" opacity="0.5" />
 
-            {/* Location Pins */}
-            {locations.map((location, index) => (
-              <motion.div
-                key={location.id}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.3 + index * 0.1, type: "spring", stiffness: 200 }}
-                className="absolute"
-                style={location.position}
-              >
-                <motion.button
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setSelectedLocation(location)}
-                  className={`relative group`}
-                >
-                  {/* Pulse Animation */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${location.color} animate-ping opacity-30`} />
+              {/* Continents */}
+              <g className="continents" fill="#87CEEB" fillOpacity="0.3" stroke="#5B9BD5" strokeWidth="1">
+                {/* North America */}
+                <motion.path
+                  d="M 150,180 Q 180,150 220,160 L 280,170 L 320,190 L 340,220 L 320,250 L 280,270 L 240,280 L 200,260 L 170,230 L 150,200 Z"
+                  initial={{ fillOpacity: 0, pathLength: 0 }}
+                  animate={isInView ? { fillOpacity: 0.3, pathLength: 1 } : {}}
+                  transition={{ duration: 1.5, delay: 0.2 }}
+                />
 
-                  {/* Pin */}
-                  <div className={`relative w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${location.color} shadow-xl flex items-center justify-center text-2xl md:text-3xl hover:shadow-2xl transition-all`}>
-                    {location.emoji}
-                  </div>
+                {/* South America */}
+                <motion.path
+                  d="M 280,320 L 300,300 L 320,310 L 340,330 L 360,360 L 370,400 L 360,430 L 340,450 L 320,460 L 300,440 L 280,400 L 270,360 Z"
+                  initial={{ fillOpacity: 0, pathLength: 0 }}
+                  animate={isInView ? { fillOpacity: 0.3, pathLength: 1 } : {}}
+                  transition={{ duration: 1.5, delay: 0.3 }}
+                />
 
-                  {/* Tooltip */}
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                    <div className="bg-white rounded-lg shadow-lg p-3 whitespace-nowrap">
-                      <p className="font-semibold text-preto-suave">{location.name}</p>
-                      <p className="text-xs text-gray-600">{location.description}</p>
-                    </div>
-                    <div className="w-3 h-3 bg-white rotate-45 absolute left-1/2 transform -translate-x-1/2 -bottom-1.5" />
-                  </div>
-                </motion.button>
-              </motion.div>
-            ))}
+                {/* Europe */}
+                <motion.path
+                  d="M 480,140 L 500,130 L 520,135 L 540,140 L 560,150 L 550,170 L 530,180 L 510,175 L 490,165 L 480,150 Z"
+                  initial={{ fillOpacity: 0, pathLength: 0 }}
+                  animate={isInView ? { fillOpacity: 0.3, pathLength: 1 } : {}}
+                  transition={{ duration: 1.5, delay: 0.4 }}
+                />
 
-            {/* Connection Lines */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none">
-              <motion.path
-                d="M 350,325 Q 520,150 550,130"
-                stroke="url(#gradient1)"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="5,5"
-                initial={{ pathLength: 0 }}
-                animate={isInView ? { pathLength: 1 } : {}}
-                transition={{ duration: 2, delay: 0.5 }}
-              />
-              <motion.path
-                d="M 250,200 Q 350,180 550,130"
-                stroke="url(#gradient2)"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="5,5"
-                initial={{ pathLength: 0 }}
-                animate={isInView ? { pathLength: 1 } : {}}
-                transition={{ duration: 2, delay: 0.7 }}
-              />
-              <motion.path
-                d="M 230,210 Q 240,205 250,200"
-                stroke="url(#gradient3)"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="5,5"
-                initial={{ pathLength: 0 }}
-                animate={isInView ? { pathLength: 1 } : {}}
-                transition={{ duration: 2, delay: 0.9 }}
-              />
+                {/* Africa */}
+                <motion.path
+                  d="M 480,220 L 500,200 L 520,210 L 540,230 L 550,260 L 560,300 L 550,340 L 530,370 L 500,380 L 470,360 L 460,320 L 465,280 L 470,250 Z"
+                  initial={{ fillOpacity: 0, pathLength: 0 }}
+                  animate={isInView ? { fillOpacity: 0.3, pathLength: 1 } : {}}
+                  transition={{ duration: 1.5, delay: 0.5 }}
+                />
+
+                {/* Asia */}
+                <motion.path
+                  d="M 580,120 L 620,110 L 680,120 L 740,140 L 780,160 L 800,190 L 780,220 L 740,230 L 680,220 L 620,210 L 580,180 L 570,150 Z"
+                  initial={{ fillOpacity: 0, pathLength: 0 }}
+                  animate={isInView ? { fillOpacity: 0.3, pathLength: 1 } : {}}
+                  transition={{ duration: 1.5, delay: 0.6 }}
+                />
+
+                {/* Australia/Oceania */}
+                <motion.path
+                  d="M 720,360 L 760,350 L 800,360 L 820,380 L 810,410 L 780,420 L 740,410 L 720,390 Z"
+                  initial={{ fillOpacity: 0, pathLength: 0 }}
+                  animate={isInView ? { fillOpacity: 0.3, pathLength: 1 } : {}}
+                  transition={{ duration: 1.5, delay: 0.7 }}
+                />
+              </g>
+
+              {/* Grid lines for latitude/longitude effect */}
+              <g stroke="#5B9BD5" strokeWidth="0.5" opacity="0.2">
+                {/* Latitude lines */}
+                <line x1="0" y1="125" x2="1000" y2="125" strokeDasharray="5,5" />
+                <line x1="0" y1="250" x2="1000" y2="250" strokeDasharray="5,5" />
+                <line x1="0" y1="375" x2="1000" y2="375" strokeDasharray="5,5" />
+
+                {/* Longitude lines */}
+                <line x1="250" y1="0" x2="250" y2="500" strokeDasharray="5,5" />
+                <line x1="500" y1="0" x2="500" y2="500" strokeDasharray="5,5" />
+                <line x1="750" y1="0" x2="750" y2="500" strokeDasharray="5,5" />
+              </g>
+
+              {/* Connection Lines between locations */}
+              <g stroke="url(#pathGradient)" strokeWidth="2" fill="none">
+                {/* Brazil to Germany */}
+                <motion.path
+                  d="M 350,350 Q 450,200 510,125"
+                  strokeDasharray="5,5"
+                  initial={{ pathLength: 0 }}
+                  animate={isInView ? { pathLength: 1 } : {}}
+                  transition={{ duration: 2, delay: 1 }}
+                />
+                {/* Germany to USA */}
+                <motion.path
+                  d="M 510,125 Q 350,100 220,175"
+                  strokeDasharray="5,5"
+                  initial={{ pathLength: 0 }}
+                  animate={isInView ? { pathLength: 1 } : {}}
+                  transition={{ duration: 2, delay: 1.3 }}
+                />
+                {/* USA to UN */}
+                <motion.path
+                  d="M 220,175 L 260,160"
+                  strokeDasharray="5,5"
+                  initial={{ pathLength: 0 }}
+                  animate={isInView ? { pathLength: 1 } : {}}
+                  transition={{ duration: 2, delay: 1.6 }}
+                />
+              </g>
+
+              {/* Gradient Definitions */}
               <defs>
-                <linearGradient id="gradient1">
-                  <stop offset="0%" stopColor="#FFD700" />
-                  <stop offset="100%" stopColor="#87CEEB" />
-                </linearGradient>
-                <linearGradient id="gradient2">
-                  <stop offset="0%" stopColor="#87CEEB" />
-                  <stop offset="100%" stopColor="#5B9BD5" />
-                </linearGradient>
-                <linearGradient id="gradient3">
-                  <stop offset="0%" stopColor="#5B9BD5" />
-                  <stop offset="100%" stopColor="#FFD700" />
+                <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FFD700" stopOpacity="0.6" />
+                  <stop offset="50%" stopColor="#87CEEB" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#5B9BD5" stopOpacity="0.6" />
                 </linearGradient>
               </defs>
             </svg>
+
+            {/* Location Pins - Overlaid on SVG */}
+            <div className="absolute inset-0">
+              {locations.map((location, index) => (
+                <motion.div
+                  key={location.id}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.8 + index * 0.1, type: "spring", stiffness: 200 }}
+                  className="absolute"
+                  style={{
+                    left: `${location.position.x}%`,
+                    top: `${location.position.y}%`,
+                    transform: 'translate(-50%, -50%)'
+                  }}
+                >
+                  <motion.button
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setSelectedLocation(location)}
+                    className="relative group"
+                  >
+                    {/* Pulse Animation */}
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${location.color} animate-ping opacity-30`} />
+
+                    {/* Pin */}
+                    <div className={`relative w-10 h-10 md:w-14 md:h-14 rounded-full bg-gradient-to-br ${location.color} shadow-xl flex items-center justify-center text-xl md:text-2xl hover:shadow-2xl transition-all border-2 border-white`}>
+                      {location.emoji}
+                    </div>
+
+                    {/* Tooltip */}
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                      <div className="bg-white rounded-lg shadow-lg p-3 whitespace-nowrap">
+                        <p className="font-semibold text-preto-suave">{location.name}</p>
+                        <p className="text-xs text-gray-600 max-w-[200px] whitespace-normal">{location.description}</p>
+                      </div>
+                      <div className="w-3 h-3 bg-white rotate-45 absolute left-1/2 transform -translate-x-1/2 -bottom-1.5" />
+                    </div>
+                  </motion.button>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
