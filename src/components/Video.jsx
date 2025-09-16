@@ -90,21 +90,22 @@ const Video = () => {
               </div>
             </motion.div>
 
-            {/* Video Card 3 */}
+            {/* Video Card 3 - Simuladores */}
             <motion.div
               whileHover={{ y: -5 }}
               className="group cursor-pointer"
+              onClick={() => window.open('https://www.youtube.com/watch?v=WosULAsvar0', '_blank')}
             >
               <div className="relative rounded-lg overflow-hidden shadow-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=600"
-                  alt="Momento 3"
+                  src={`https://img.youtube.com/vi/WosULAsvar0/maxresdefault.jpg`}
+                  alt="Retorno aos Simuladores"
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                   <div className="p-4">
                     <h4 className="text-white font-semibold">Retorno aos Simuladores</h4>
-                    <p className="text-white/80 text-sm">3:27</p>
+                    <p className="text-white/80 text-sm">Assista no YouTube</p>
                   </div>
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
