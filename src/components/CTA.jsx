@@ -7,9 +7,10 @@ import {
   FiMessageCircle,
   FiHeart,
   FiUsers,
-  FiSend
+  FiSend,
+  FiYoutube
 } from 'react-icons/fi';
-import { FaWhatsapp, FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
+import { FaWhatsapp, FaYoutube } from 'react-icons/fa';
 
 const CTA = () => {
   const [email, setEmail] = useState('');
@@ -33,10 +34,8 @@ const CTA = () => {
 
   const socialLinks = {
     whatsapp: `https://wa.me/19146093655?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`,
-    facebook: `#`,
-    twitter: `#`,
-    linkedin: `#`,
-    instagram: 'https://www.instagram.com/rafaelvaivoar'
+    instagram: 'https://www.instagram.com/rafaelvaivoar',
+    youtube: 'https://www.youtube.com/@rafaelvaivoar'
   };
 
   return (
@@ -90,7 +89,7 @@ const CTA = () => {
               <FiShare2 className="text-3xl text-white" />
             </div>
             <h3 className="text-2xl font-bold text-white mb-3">Compartilhe</h3>
-            <p className="text-white/80 mb-6">
+            <p className="text-white/80 mb-6 font-semibold">
               Espalhe esta história e ajude a conscientizar mais pessoas
             </p>
             <div className="flex justify-center gap-3">
@@ -101,39 +100,24 @@ const CTA = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white hover:bg-green-600 transition-colors"
+                title="WhatsApp"
               >
                 <FaWhatsapp className="text-xl" />
               </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.95 }}
-                href={socialLinks.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors"
+              <motion.button
+                disabled
+                className="w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-full flex items-center justify-center text-white opacity-50 cursor-not-allowed"
+                title="Instagram - Em breve"
               >
-                <FaFacebookF className="text-xl" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.95 }}
-                href={socialLinks.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-sky-500 rounded-full flex items-center justify-center text-white hover:bg-sky-600 transition-colors"
+                <FiInstagram className="text-xl" />
+              </motion.button>
+              <motion.button
+                disabled
+                className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white opacity-50 cursor-not-allowed"
+                title="YouTube - Em breve"
               >
-                <FaTwitter className="text-xl" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.95 }}
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center text-white hover:bg-blue-800 transition-colors"
-              >
-                <FaLinkedinIn className="text-xl" />
-              </motion.a>
+                <FaYoutube className="text-xl" />
+              </motion.button>
             </div>
           </motion.div>
 
@@ -163,27 +147,30 @@ const CTA = () => {
             </motion.a>
           </motion.div>
 
-          {/* Support Card */}
+          {/* YouTube Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="glass-dark backdrop-blur-lg rounded-2xl p-8 text-center group hover:scale-105 transition-transform"
           >
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <FiHeart className="text-3xl text-white" />
+            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <FaYoutube className="text-3xl text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-3">Apoie a Causa</h3>
+            <h3 className="text-2xl font-bold text-white mb-3">YouTube</h3>
             <p className="text-white/80 mb-6">
-              Seja voluntário ou contribua com o movimento
+              Assista aos vídeos e documentários completos
             </p>
-            <motion.button
+            <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all"
+              href={socialLinks.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 bg-red-600 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all"
             >
-              Saiba Como Ajudar
-            </motion.button>
+              Assistir Vídeos
+            </motion.a>
           </motion.div>
         </div>
 
