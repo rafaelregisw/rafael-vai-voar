@@ -4,6 +4,11 @@ import { FiPlay } from 'react-icons/fi';
 
 const Video = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [playingVideos, setPlayingVideos] = useState({
+    onu: false,
+    cirurgia: false,
+    simuladores: false
+  });
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
@@ -13,6 +18,34 @@ const Video = () => {
   const handlePlayClick = () => {
     setIsPlaying(true);
   };
+
+  const handleCardPlay = (videoKey) => {
+    setPlayingVideos(prev => ({
+      ...prev,
+      [videoKey]: true
+    }));
+  };
+
+  const videos = [
+    {
+      key: 'onu',
+      id: 'KJPW01A1gmQ',
+      title: 'Reconhecimento na ONU',
+      description: 'Momento histórico'
+    },
+    {
+      key: 'cirurgia',
+      id: 'gtqN2V_DO_o',
+      title: 'Cirurgia nos EUA',
+      description: 'Depoimento emocionante'
+    },
+    {
+      key: 'simuladores',
+      id: 'WosULAsvar0',
+      title: 'Retorno aos Simuladores',
+      description: 'De volta ao sonho'
+    }
+  ];
 
   return (
     <section className="py-20 md:py-32 bg-gradient-to-b from-cinza-suave to-white">
@@ -104,83 +137,60 @@ const Video = () => {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Video Card 1 - ONU */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="group cursor-pointer"
-              onClick={() => window.open('https://www.youtube.com/watch?v=KJPW01A1gmQ', '_blank')}
-            >
-              <div className="relative rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src={`https://img.youtube.com/vi/KJPW01A1gmQ/maxresdefault.jpg`}
-                  alt="Reconhecimento na ONU"
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div className="p-4">
-                    <h4 className="text-white font-semibold">Reconhecimento na ONU</h4>
-                    <p className="text-white/80 text-sm">Assista no YouTube</p>
-                  </div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
-                    <FiPlay className="text-2xl text-azul-horizonte ml-1" />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+            {videos.map((video, index) => (
+              <motion.div
+                key={video.key}
+                whileHover={{ y: -5 }}
+                className="group cursor-pointer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+              >
+                <div className="relative rounded-lg overflow-hidden shadow-lg bg-black aspect-video">
+                  {!playingVideos[video.key] ? (
+                    <>
+                      {/* Thumbnail */}
+                      <img
+                        src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                        alt={video.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
 
-            {/* Video Card 2 - Depoimento de Rafael */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="group cursor-pointer"
-              onClick={() => window.open('https://www.youtube.com/watch?v=gtqN2V_DO_o', '_blank')}
-            >
-              <div className="relative rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src={`https://img.youtube.com/vi/gtqN2V_DO_o/maxresdefault.jpg`}
-                  alt="Depoimento de Rafael"
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div className="p-4">
-                    <h4 className="text-white font-semibold">Cirurgia nos EUA</h4>
-                    <p className="text-white/80 text-sm">Assista o depoimento completo</p>
-                  </div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
-                    <FiPlay className="text-2xl text-azul-horizonte ml-1" />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
 
-            {/* Video Card 3 - Simuladores */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="group cursor-pointer"
-              onClick={() => window.open('https://www.youtube.com/watch?v=WosULAsvar0', '_blank')}
-            >
-              <div className="relative rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src={`https://img.youtube.com/vi/WosULAsvar0/maxresdefault.jpg`}
-                  alt="Retorno aos Simuladores"
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div className="p-4">
-                    <h4 className="text-white font-semibold">Retorno aos Simuladores</h4>
-                    <p className="text-white/80 text-sm">Assista no YouTube</p>
-                  </div>
+                      {/* Play Button */}
+                      <button
+                        onClick={() => handleCardPlay(video.key)}
+                        className="absolute inset-0 flex items-center justify-center"
+                      >
+                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-xl opacity-0 group-hover:opacity-100 transition-all">
+                          <FiPlay className="text-3xl text-azul-horizonte ml-1" />
+                        </div>
+                      </button>
+
+                      {/* Video Info */}
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <h4 className="text-white font-semibold text-shadow-lg">{video.title}</h4>
+                        <p className="text-white/80 text-sm text-shadow">{video.description}</p>
+                      </div>
+                    </>
+                  ) : (
+                    /* YouTube Iframe */
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0&modestbranding=1`}
+                      title={video.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full"
+                    />
+                  )}
                 </div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
-                    <FiPlay className="text-2xl text-azul-horizonte ml-1" />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
