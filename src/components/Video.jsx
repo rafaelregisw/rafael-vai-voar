@@ -38,21 +38,22 @@ const Video = () => {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Video Card 1 */}
+            {/* Video Card 1 - ONU */}
             <motion.div
               whileHover={{ y: -5 }}
               className="group cursor-pointer"
+              onClick={() => window.open('https://www.youtube.com/watch?v=KJPW01A1gmQ', '_blank')}
             >
               <div className="relative rounded-lg overflow-hidden shadow-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1584467541268-b040f83be3fd?q=80&w=600"
-                  alt="Momento 1"
+                  src={`https://img.youtube.com/vi/KJPW01A1gmQ/maxresdefault.jpg`}
+                  alt="Reconhecimento na ONU"
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                   <div className="p-4">
                     <h4 className="text-white font-semibold">Reconhecimento na ONU</h4>
-                    <p className="text-white/80 text-sm">5:42</p>
+                    <p className="text-white/80 text-sm">Assista no YouTube</p>
                   </div>
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
