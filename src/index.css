@@ -16,11 +16,13 @@
   body {
     @apply antialiased;
     overscroll-behavior: none;
+    overscroll-behavior-y: none;
     overflow-x: hidden;
     position: relative;
     width: 100%;
     min-height: 100vh;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: auto;
+    touch-action: pan-y;
   }
 
   #root {
