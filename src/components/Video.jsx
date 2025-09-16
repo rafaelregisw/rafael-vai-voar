@@ -19,8 +19,8 @@ const Video = () => {
     return `https://img.youtube.com/vi/${videoId}/${quality}.jpg`;
   };
 
-  const mainVideoId = "MmeehCjBxHs";
-  const thumbnailUrl = getThumbnailUrl(mainVideoId, 'maxresdefault');
+  const mainVideoId = "gtqN2V_DO_o"; // Reportagem no Domingo Espetacular
+  const thumbnailUrl = getThumbnailUrl(mainVideoId, 'hqdefault');
 
   const handlePlayClick = () => {
     setIsPlaying(true);
@@ -43,8 +43,8 @@ const Video = () => {
     {
       key: 'cirurgia',
       id: 'gtqN2V_DO_o',
-      title: 'Reportagem no Domingo Espetacular',
-      description: 'Depoimento sobre a cirurgia nos EUA'
+      title: 'Domingo Espetacular - Cirurgia nos EUA',
+      description: 'Reportagem completa sobre a cirurgia'
     },
     {
       key: 'simuladores',
@@ -87,8 +87,16 @@ const Video = () => {
                 {/* Thumbnail */}
                 <img
                   src={thumbnailUrl}
-                  alt="História de Rafael"
+                  alt="Reportagem no Domingo Espetacular"
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    // Fallback para qualidade menor se a imagem não carregar
+                    if (e.target.src.includes('hqdefault')) {
+                      e.target.src = getThumbnailUrl(mainVideoId, 'mqdefault');
+                    } else if (e.target.src.includes('mqdefault')) {
+                      e.target.src = getThumbnailUrl(mainVideoId, 'default');
+                    }
+                  }}
                 />
 
                 {/* Overlay */}
@@ -109,10 +117,10 @@ const Video = () => {
                 {/* Video Info */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
                   <h3 className="text-2xl md:text-3xl font-bold mb-2 text-shadow-lg">
-                    A História Completa de Rafael
+                    Reportagem no Domingo Espetacular
                   </h3>
                   <p className="text-white/80 text-shadow">
-                    Documentário sobre a jornada de superação e esperança
+                    A história completa da cirurgia nos EUA que mudou tudo
                   </p>
                 </div>
               </>
@@ -158,7 +166,7 @@ const Video = () => {
                     <>
                       {/* Thumbnail */}
                       <img
-                        src={getThumbnailUrl(video.id, video.key === 'cirurgia' ? 'hqdefault' : 'maxresdefault')}
+                        src={getThumbnailUrl(video.id, 'maxresdefault')}
                         alt={video.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         onError={(e) => {
