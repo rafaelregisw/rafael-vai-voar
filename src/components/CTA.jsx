@@ -104,20 +104,28 @@ const CTA = () => {
               >
                 <FaWhatsapp className="text-xl" />
               </motion.a>
-              <motion.button
-                disabled
-                className="w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-full flex items-center justify-center text-white opacity-50 cursor-not-allowed"
-                title="Instagram - Em breve"
+              <motion.a
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.95 }}
+                href={socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-full flex items-center justify-center text-white hover:shadow-lg transition-all"
+                title="Instagram"
               >
                 <FiInstagram className="text-xl" />
-              </motion.button>
-              <motion.button
-                disabled
-                className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white opacity-50 cursor-not-allowed"
-                title="YouTube - Em breve"
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.95 }}
+                href={socialLinks.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700 transition-colors"
+                title="YouTube"
               >
                 <FaYoutube className="text-xl" />
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
 
