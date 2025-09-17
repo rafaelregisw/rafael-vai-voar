@@ -180,6 +180,9 @@ const Footer = () => {
               <p>
                 © {currentYear} Associação Rafael Vai Voar. Todos os direitos reservados.
               </p>
+              <p className="mt-1">
+                CNPJ: 52.277.434/0001-05
+              </p>
               <p className="flex items-center justify-center md:justify-start gap-1 mt-2">
                 Feito com <FiHeart className="text-red-500 animate-pulse" /> para transformar vidas
               </p>
