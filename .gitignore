@@ -27,11 +27,11 @@ dist-ssr
 .env
 .env.local
 .env.production
-backend/.env
-backend/.env.local
-backend/.env.production
+server/.env
+server/.env.local
+server/.env.production
 
-# Backend
-backend/node_modules
-backend/logs
-backend/*.log
+# Server
+server/node_modules
+server/logs
+server/*.log

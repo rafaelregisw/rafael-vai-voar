@@ -70,7 +70,7 @@ git push origin main
 ```
 rafael-vai-voar/
 ├── src/                  # Frontend React
-├── backend/              # Backend Express + Mercado Pago
+├── server/               # Backend Express + Mercado Pago
 │   ├── server.js
 │   ├── package.json
 │   └── Dockerfile
