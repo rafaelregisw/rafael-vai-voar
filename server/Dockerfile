@@ -1,20 +1,23 @@
-# Dockerfile para o Backend (API do Mercado Pago)
-FROM node:20-alpine
+# Backend Dockerfile
+FROM node:18-alpine
 
-# Criar diretório da aplicação
 WORKDIR /app
 
-# Copiar arquivos de dependências
+# Copy package files
 COPY package*.json ./
 
-# Instalar dependências
+# Install dependencies
 RUN npm ci --only=production
 
-# Copiar código da aplicação
+# Copy application code
 COPY . .
 
-# Expor porta do servidor
+# Expose port
 EXPOSE 3001
 
-# Comando para iniciar o servidor
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3001/api/health', (r) => r.statusCode === 200 ? process.exit(0) : process.exit(1))"
+
+# Start the server
 CMD ["node", "server.js"]

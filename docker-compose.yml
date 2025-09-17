@@ -19,7 +19,7 @@ services:
   # Backend - API Mercado Pago
   backend:
     build:
-      context: ./backend
+      context: ./server
       dockerfile: Dockerfile
     ports:
       - "3001:3001"
