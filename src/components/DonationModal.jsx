@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiCopy, FiCheckCircle, FiSmartphone } from 'react-icons/fi';
 import { QRCodeCanvas } from 'qrcode.react';
+import { generateRafaelVaiVoarPix } from '../utils/pixGenerator';
 
 const DonationModal = ({ isOpen, onClose }) => {
   const [copied, setCopied] = useState(false);
   const pixKey = 'rafaelregis95@gmail.com';
 
-  // Código PIX Copia e Cola (formato simplificado)
-  const pixCode = `00020126330014BR.GOV.BCB.PIX0119${pixKey}5204000053039865802BR5924RAFAEL VAI VOAR MOVIMENTO6009SAO PAULO62070503***63045A2F`;
+  // Gera código PIX válido seguindo padrão EMV do Banco Central
+  const pixCode = generateRafaelVaiVoarPix();
 
   const handleCopyPix = () => {
     navigator.clipboard.writeText(pixKey);
