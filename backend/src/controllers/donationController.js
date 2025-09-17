@@ -33,9 +33,9 @@ const createPreference = async (req, res) => {
         }
       } : {},
       back_urls: {
-        success: process.env.SUCCESS_URL || 'http://localhost:5173/donation-success',
-        failure: process.env.FAILURE_URL || 'http://localhost:5173/donation-failure',
-        pending: process.env.PENDING_URL || 'http://localhost:5173/donation-pending'
+        success: 'https://rafaelvaivoar.com',
+        failure: 'https://rafaelvaivoar.com',
+        pending: 'https://rafaelvaivoar.com'
       },
       auto_return: 'approved',
       statement_descriptor: 'RAFAEL VAI VOAR',
