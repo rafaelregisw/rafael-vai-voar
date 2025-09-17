@@ -43,8 +43,8 @@ const Video = () => {
     {
       key: 'cirurgia',
       id: 'gtqN2V_DO_o',
-      title: 'Domingo Espetacular - Cirurgia nos EUA',
-      description: 'Reportagem completa sobre a cirurgia'
+      title: 'Cirurgia nos EUA',
+      description: 'A operação que mudou tudo'
     },
     {
       key: 'simuladores',
@@ -168,7 +168,7 @@ const Video = () => {
                     <>
                       {/* Thumbnail */}
                       <img
-                        src={getThumbnailUrl(video.id, 'maxresdefault')}
+                        src={getThumbnailUrl(video.id, video.id === 'gtqN2V_DO_o' ? 'hqdefault' : 'maxresdefault')}
                         alt={video.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         onError={(e) => {
@@ -177,6 +177,8 @@ const Video = () => {
                             e.target.src = getThumbnailUrl(video.id, 'hqdefault');
                           } else if (e.target.src.includes('hqdefault')) {
                             e.target.src = getThumbnailUrl(video.id, 'mqdefault');
+                          } else if (e.target.src.includes('mqdefault')) {
+                            e.target.src = getThumbnailUrl(video.id, 'default');
                           }
                         }}
                       />
