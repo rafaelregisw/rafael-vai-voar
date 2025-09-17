@@ -19,8 +19,8 @@ const Video = () => {
     return `https://img.youtube.com/vi/${videoId}/${quality}.jpg`;
   };
 
-  const mainVideoId = "gtqN2V_DO_o"; // Reportagem no Domingo Espetacular
-  const thumbnailUrl = getThumbnailUrl(mainVideoId, 'hqdefault');
+  const mainVideoId = "MmeehCjBxHs"; // Domingo Espetacular
+  const thumbnailUrl = getThumbnailUrl(mainVideoId, 'maxresdefault');
 
   const handlePlayClick = () => {
     setIsPlaying(true);
@@ -87,11 +87,13 @@ const Video = () => {
                 {/* Thumbnail */}
                 <img
                   src={thumbnailUrl}
-                  alt="Reportagem no Domingo Espetacular"
+                  alt="Domingo Espetacular"
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     // Fallback para qualidade menor se a imagem não carregar
-                    if (e.target.src.includes('hqdefault')) {
+                    if (e.target.src.includes('maxresdefault')) {
+                      e.target.src = getThumbnailUrl(mainVideoId, 'hqdefault');
+                    } else if (e.target.src.includes('hqdefault')) {
                       e.target.src = getThumbnailUrl(mainVideoId, 'mqdefault');
                     } else if (e.target.src.includes('mqdefault')) {
                       e.target.src = getThumbnailUrl(mainVideoId, 'default');
@@ -117,7 +119,7 @@ const Video = () => {
                 {/* Video Info */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
                   <h3 className="text-2xl md:text-3xl font-bold mb-2 text-shadow-lg">
-                    Reportagem no Domingo Espetacular
+                    Domingo Espetacular
                   </h3>
                   <p className="text-white/80 text-shadow">
                     A história completa da cirurgia nos EUA que mudou tudo
