@@ -1,9 +1,13 @@
 // Configuração da API para produção e desenvolvimento
-const API_URL = import.meta.env.VITE_API_URL ||
-  (import.meta.env.DEV
-    ? 'http://localhost:3001'
-    : 'https://api.rafaelvaivoar.com'
-  );
+const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+// Detecta automaticamente o ambiente
+const API_URL = isDevelopment
+  ? 'http://localhost:3001'  // Backend local
+  : 'https://api.rafaelvaivoar.com';  // Backend em produção (configurar no Coolify)
+
+console.log(`🔧 API configurada para: ${isDevelopment ? 'DESENVOLVIMENTO' : 'PRODUÇÃO'}`);
+console.log(`📡 URL da API: ${API_URL}`);
 
 export default {
   API_URL,
