@@ -9,33 +9,42 @@ services:
     ports:
       - "80:80"
     environment:
-      - VITE_API_URL=${API_URL:-http://backend:3001}
-    depends_on:
-      - backend
+      - VITE_API_URL=https://api.rafaelvaivoar.com
     networks:
       - rafael-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`rafaelvaivoar.com`)"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
     restart: unless-stopped
 
-  # Backend - API Mercado Pago
+  # Backend - API Node.js + Mercado Pago
   backend:
     build:
-      context: ./server
+      context: ./backend
       dockerfile: Dockerfile
     ports:
       - "3001:3001"
     environment:
-      - NODE_ENV=${NODE_ENV:-production}
+      - NODE_ENV=production
       - PORT=3001
       - MP_ACCESS_TOKEN=${MP_ACCESS_TOKEN}
       - MP_PUBLIC_KEY=${MP_PUBLIC_KEY}
       - MP_CLIENT_ID=${MP_CLIENT_ID}
       - MP_CLIENT_SECRET=${MP_CLIENT_SECRET}
-      - FRONTEND_URL=${FRONTEND_URL:-https://rafaelvaivoar.com}
-      - SUCCESS_URL=${SUCCESS_URL:-https://rafaelvaivoar.com/donation-success}
-      - FAILURE_URL=${FAILURE_URL:-https://rafaelvaivoar.com/donation-failure}
-      - PENDING_URL=${PENDING_URL:-https://rafaelvaivoar.com/donation-pending}
+      - FRONTEND_URL=https://rafaelvaivoar.com
+      - SUCCESS_URL=https://rafaelvaivoar.com/donation-success
+      - FAILURE_URL=https://rafaelvaivoar.com/donation-failure
+      - PENDING_URL=https://rafaelvaivoar.com/donation-pending
+      - CORS_ORIGIN=https://rafaelvaivoar.com,http://localhost:5173,http://localhost:3000
     networks:
       - rafael-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`api.rafaelvaivoar.com`)"
+      - "traefik.http.routers.backend.entrypoints=websecure"
+      - "traefik.http.services.backend.loadbalancer.server.port=3001"
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3001/api/health"]

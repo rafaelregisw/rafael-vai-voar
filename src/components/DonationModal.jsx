@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiHeart, FiGift, FiDollarSign, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
-import axios from 'axios';
 import apiConfig from '../config/api';
 
 const DonationModal = ({ isOpen, onClose }) => {
@@ -43,14 +42,17 @@ const DonationModal = ({ isOpen, onClose }) => {
       }
 
       // Fazer requisição ao backend
-      const response = await axios.post(apiConfig.endpoints.createPreference, {
-        amount,
-        customAmount: showCustomInput ? amount : null
+      const response = await apiConfig.apiRequest(apiConfig.endpoints.createPreference, {
+        method: 'POST',
+        body: JSON.stringify({
+          amount,
+          customAmount: showCustomInput ? amount : null
+        })
       });
 
       // Redirecionar para o checkout do Mercado Pago
-      if (response.data.init_point) {
-        window.location.href = response.data.init_point;
+      if (response.init_point) {
+        window.location.href = response.init_point;
       } else {
         throw new Error('Erro ao criar link de pagamento');
       }
