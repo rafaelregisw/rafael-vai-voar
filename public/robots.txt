@@ -1,0 +1,24 @@
+# Robots.txt para Rafael Vai Voar
+# https://rafaelvaivoar.org.br
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Sitemaps
+Sitemap: https://rafaelvaivoar.org.br/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Specific Bot Rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

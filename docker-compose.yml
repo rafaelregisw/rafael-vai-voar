@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # Frontend - Site React
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - VITE_API_URL=${API_URL:-http://backend:3001}
+    depends_on:
+      - backend
+    networks:
+      - rafael-network
+    restart: unless-stopped
+
+  # Backend - API Mercado Pago
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - PORT=3001
+      - MP_ACCESS_TOKEN=${MP_ACCESS_TOKEN}
+      - MP_PUBLIC_KEY=${MP_PUBLIC_KEY}
+      - MP_CLIENT_ID=${MP_CLIENT_ID}
+      - MP_CLIENT_SECRET=${MP_CLIENT_SECRET}
+      - FRONTEND_URL=${FRONTEND_URL:-https://rafaelvaivoar.com}
+      - SUCCESS_URL=${SUCCESS_URL:-https://rafaelvaivoar.com/donation-success}
+      - FAILURE_URL=${FAILURE_URL:-https://rafaelvaivoar.com/donation-failure}
+      - PENDING_URL=${PENDING_URL:-https://rafaelvaivoar.com/donation-pending}
+    networks:
+      - rafael-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  rafael-network:
+    driver: bridge

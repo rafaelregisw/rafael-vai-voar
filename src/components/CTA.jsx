@@ -8,13 +8,16 @@ import {
   FiHeart,
   FiUsers,
   FiSend,
-  FiYoutube
+  FiYoutube,
+  FiDollarSign
 } from 'react-icons/fi';
 import { FaWhatsapp, FaYoutube } from 'react-icons/fa';
+import DonationModal from './DonationModal';
 
 const CTA = () => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
@@ -74,6 +77,47 @@ const CTA = () => {
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-10 text-shadow">
             Sua ação pode transformar vidas. Escolha como você quer fazer a diferença.
           </p>
+
+          {/* Main Donation Button */}
+          <motion.button
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsDonationModalOpen(true)}
+            className="relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-dourado-suave via-yellow-300 to-dourado-suave text-preto-suave font-bold text-lg rounded-full shadow-2xl hover:shadow-3xl transition-all group"
+          >
+            <motion.div
+              animate={{
+                scale: [1, 1.2, 1],
+                rotate: [0, 10, -10, 0]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                repeatDelay: 3
+              }}
+            >
+              <FiHeart className="text-2xl" />
+            </motion.div>
+            <span>Apoie o Movimento</span>
+            <FiDollarSign className="text-xl opacity-70 group-hover:opacity-100 transition-opacity" />
+
+            {/* Pulse Effect */}
+            <motion.div
+              className="absolute inset-0 rounded-full bg-gradient-to-r from-dourado-suave to-yellow-300"
+              animate={{
+                scale: [1, 1.1, 1],
+                opacity: [0.5, 0, 0.5]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut'
+              }}
+            />
+          </motion.button>
         </motion.div>
 
         {/* Action Cards */}
@@ -262,6 +306,12 @@ const CTA = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Donation Modal */}
+      <DonationModal
+        isOpen={isDonationModalOpen}
+        onClose={() => setIsDonationModalOpen(false)}
+      />
     </section>
   );
 };
