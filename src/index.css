@@ -7,22 +7,20 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    overscroll-behavior: none;
     overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
     width: 100%;
   }
 
   body {
     @apply antialiased;
-    overscroll-behavior: none;
-    overscroll-behavior-y: none;
     overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
     width: 100%;
     min-height: 100vh;
     -webkit-overflow-scrolling: auto;
-    touch-action: pan-y;
   }
 
   #root {
