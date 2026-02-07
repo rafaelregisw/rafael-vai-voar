@@ -1,11 +1,22 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion as Motion, useInView } from 'framer-motion';
 import { FiClock, FiUsers, FiGlobe, FiHeart, FiTrendingUp, FiAward } from 'react-icons/fi';
+import { Trans, useTranslation } from 'react-i18next';
+
+const languageToLocale = (lng) => {
+  const base = (lng || 'pt').split('-')[0];
+  if (base === 'pt') return 'pt-BR';
+  if (base === 'en') return 'en-US';
+  if (base === 'es') return 'es-ES';
+  return base;
+};
 
 const Counter = ({ end, duration = 2, suffix = "" }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const { i18n } = useTranslation();
+  const locale = languageToLocale(i18n.resolvedLanguage || i18n.language);
 
   useEffect(() => {
     if (!isInView) return;
@@ -27,63 +38,58 @@ const Counter = ({ end, duration = 2, suffix = "" }) => {
 
   return (
     <span ref={ref}>
-      {count.toLocaleString()}{suffix}
+      {count.toLocaleString(locale)}{suffix}
     </span>
   );
 };
 
-const stats = [
+const STATS = [
   {
+    id: 'daysPain',
     icon: FiClock,
     value: 3650,
     suffix: "",
-    label: "Dias de Dor Ininterrupta",
-    description: "10 anos, 24 horas por dia, nível 10/10",
     color: "from-red-500 to-orange-500"
   },
   {
+    id: 'doctors',
     icon: FiUsers,
     value: 100,
     suffix: "+",
-    label: "Médicos Consultados",
-    description: "Sem diagnóstico por uma década",
     color: "from-blue-500 to-cyan-500"
   },
   {
+    id: 'worldCases',
     icon: FiGlobe,
     value: 150,
     suffix: "",
-    label: "Casos no Mundo",
-    description: "Rafael é o único caso conhecido no Brasil",
     color: "from-purple-500 to-pink-500"
   },
   {
+    id: 'donors',
     icon: FiHeart,
     value: 50000,
     suffix: "+",
-    label: "Pessoas que Doaram",
-    description: "União mundial pela vida de Rafael",
     color: "from-pink-500 to-red-500"
   },
   {
+    id: 'reached',
     icon: FiTrendingUp,
     value: 1000000,
     suffix: "+",
-    label: "Pessoas Alcançadas",
-    description: "História que inspirou o Brasil",
     color: "from-yellow-500 to-amber-500"
   },
   {
+    id: 'recognitions',
     icon: FiAward,
     value: 3,
     suffix: "",
-    label: "Reconhecimentos Oficiais",
-    description: "ONU, Câmara Federal e Senado",
     color: "from-indigo-500 to-blue-500"
   }
 ];
 
 const Numbers = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
@@ -97,7 +103,7 @@ const Numbers = () => {
 
       <div className="max-container section-padding relative z-10">
         {/* Section Header */}
-        <motion.div
+        <Motion.div
           ref={sectionRef}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -105,19 +111,19 @@ const Numbers = () => {
           className="text-center mb-10 md:mb-12"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 text-shadow-xl">
-            Números que <span className="text-dourado-suave">Impactam</span>
+            <Trans i18nKey="numbers.heading" components={[<span key="0" className="text-dourado-suave" />]} />
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto text-shadow">
-            Cada número conta uma parte desta jornada extraordinária de superação e esperança
+            {t('numbers.description')}
           </p>
-        </motion.div>
+        </Motion.div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {stats.map((stat, index) => {
+          {STATS.map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <motion.div
+              <Motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
@@ -137,31 +143,32 @@ const Numbers = () => {
 
                 {/* Label */}
                 <h3 className="text-lg font-semibold text-dourado-suave mb-1">
-                  {stat.label}
+                  {t(`numbers.stats.${stat.id}.label`)}
                 </h3>
 
                 {/* Description */}
                 <p className="text-white/80 text-sm">
-                  {stat.description}
+                  {t(`numbers.stats.${stat.id}.description`)}
                 </p>
-              </motion.div>
+              </Motion.div>
             );
           })}
         </div>
 
         {/* Bottom Quote */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.8 }}
           className="text-center mt-10 md:mt-12"
         >
           <p className="text-2xl md:text-3xl font-serif text-white text-shadow-xl">
-            "Cada número representa uma batalha vencida,
-            <br />
-            cada estatística, uma razão para <span className="text-dourado-suave">nunca desistir</span>."
+            <Trans
+              i18nKey="numbers.bottomQuote"
+              components={[<span key="0" className="text-dourado-suave" />, <br key="1" />]}
+            />
           </p>
-        </motion.div>
+        </Motion.div>
       </div>
     </section>
   );

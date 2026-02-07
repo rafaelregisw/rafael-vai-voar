@@ -19,11 +19,15 @@ export default {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
         'display': ['Crimson Text', 'Georgia', 'serif']
       },
+      boxShadow: {
+        '3xl': '0 35px 75px rgba(0, 0, 0, 0.35)'
+      },
       animation: {
         'float': 'float 6s ease-in-out infinite',
         'fade-in': 'fadeIn 1s ease-out',
         'slide-up': 'slideUp 0.8s ease-out',
-        'pulse-slow': 'pulse 3s infinite'
+        'pulse-slow': 'pulse 3s infinite',
+        'gradient': 'gradient-shift 16s ease-in-out infinite'
       },
       keyframes: {
         float: {
@@ -48,3 +52,4 @@ export default {
   },
   plugins: [],
 }
+

@@ -38,3 +38,31 @@
 
 ## 🚀 Deploy
 Projeto pronto para push e deploy automático via Coolify.
+
+---
+
+# 🌍 Release Notes - v2.0 - Novas Línguas de Idioma (PT/EN/ES)
+
+## 📅 Data: 07/02/2026
+
+## ✨ Principais Mudanças
+
+### 1. 🌐 Internacionalização (i18n)
+- ✅ Tradução do conteúdo para **Português**, **Inglês** e **Espanhol**
+- ✅ Arquivos de tradução em `public/locales/{pt,en,es}/common.json`
+
+### 2. 🧭 Detecção automática + seletor manual
+- ✅ Detecta automaticamente pelo idioma do navegador do visitante
+- ✅ Seletor de idioma no topo direito com preferência persistida (cookie + localStorage)
+
+### 3. 📦 Dependências adicionadas
+- **i18next**
+- **react-i18next**
+- **i18next-browser-languagedetector**
+- **i18next-http-backend**
+
+## ✅ Testes e verificação
+- `npm ci`
+- `npm run lint`
+- `npm run build`
+- Smoke test em navegador (preview + troca de idioma + persistência)

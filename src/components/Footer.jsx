@@ -1,8 +1,11 @@
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { FiInstagram, FiMail, FiHeart, FiArrowUp } from 'react-icons/fi';
 import { FaWhatsapp, FaFacebookF, FaYoutube } from 'react-icons/fa';
+import { Trans, useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -30,42 +33,39 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* About Section */}
           <div className="md:col-span-2">
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="mb-6"
             >
               <h3 className="text-3xl font-serif font-bold mb-4">
-                Associação <span className="gradient-gold">Rafael Vai Voar</span>
+                <Trans i18nKey="footer.about.title" components={[<span key="0" className="gradient-gold" />]} />
               </h3>
               <p className="text-white/70 leading-relaxed">
-                Transformando dor em propósito, lutamos por políticas públicas
-                que garantam acesso a tratamentos para doenças raras e dor crônica
-                extrema no Brasil.
+                {t('footer.about.description')}
               </p>
-            </motion.div>
+            </Motion.div>
 
             {/* Mission Quote */}
-            <motion.blockquote
+            <Motion.blockquote
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="border-l-4 border-dourado-suave pl-4 italic text-white/60"
             >
-              "Nenhuma dor deveria ser invisível. Nenhum sonho deveria morrer
-              por falta de acesso à saúde."
-            </motion.blockquote>
+              {t('footer.about.quote')}
+            </Motion.blockquote>
           </div>
 
           {/* Quick Links */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h4 className="text-xl font-semibold mb-4 text-dourado-suave">
-              Links Rápidos
+              {t('footer.quickLinks.title')}
             </h4>
             <ul className="space-y-2">
               <li>
@@ -73,7 +73,7 @@ const Footer = () => {
                   href="#story"
                   className="text-white/70 hover:text-dourado-suave transition-colors"
                 >
-                  Nossa História
+                  {t('footer.quickLinks.story')}
                 </a>
               </li>
               <li>
@@ -81,7 +81,7 @@ const Footer = () => {
                   href="#manifesto"
                   className="text-white/70 hover:text-dourado-suave transition-colors"
                 >
-                  Manifesto
+                  {t('footer.quickLinks.manifesto')}
                 </a>
               </li>
               <li>
@@ -89,7 +89,7 @@ const Footer = () => {
                   href="#video"
                   className="text-white/70 hover:text-dourado-suave transition-colors"
                 >
-                  Depoimento
+                  {t('footer.quickLinks.testimonial')}
                 </a>
               </li>
               <li>
@@ -97,20 +97,20 @@ const Footer = () => {
                   href="#contact"
                   className="text-white/70 hover:text-dourado-suave transition-colors"
                 >
-                  Contato
+                  {t('footer.quickLinks.contact')}
                 </a>
               </li>
             </ul>
-          </motion.div>
+          </Motion.div>
 
           {/* Contact & Social */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <h4 className="text-xl font-semibold mb-4 text-dourado-suave">
-              Conecte-se
+              {t('footer.connect.title')}
             </h4>
 
             {/* Email */}
@@ -124,7 +124,7 @@ const Footer = () => {
 
             {/* Social Icons */}
             <div className="flex gap-3">
-              <motion.a
+              <Motion.a
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
                 href="https://www.instagram.com/rafaelvaivoar"
@@ -133,8 +133,8 @@ const Footer = () => {
                 className="w-10 h-10 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-full flex items-center justify-center hover:shadow-lg transition-shadow"
               >
                 <FiInstagram className="text-white text-lg" />
-              </motion.a>
-              <motion.a
+              </Motion.a>
+              <Motion.a
                 whileHover={{ scale: 1.2, rotate: -5 }}
                 whileTap={{ scale: 0.95 }}
                 href="https://wa.me/19146093655"
@@ -143,17 +143,17 @@ const Footer = () => {
                 className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:shadow-lg transition-shadow"
               >
                 <FaWhatsapp className="text-white text-lg" />
-              </motion.a>
-              <motion.div
+              </Motion.a>
+              <Motion.div
                 className="w-10 h-10 bg-gray-500 rounded-full flex items-center justify-center opacity-50 cursor-not-allowed relative group"
-                title="Em breve"
+                title={t('footer.connect.soon')}
               >
                 <FaFacebookF className="text-white text-lg" />
                 <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                  Em breve
+                  {t('footer.connect.soon')}
                 </span>
-              </motion.div>
-              <motion.a
+              </Motion.div>
+              <Motion.a
                 whileHover={{ scale: 1.2, rotate: -5 }}
                 whileTap={{ scale: 0.95 }}
                 href="https://www.youtube.com/@rafaelvaivoar"
@@ -162,34 +162,37 @@ const Footer = () => {
                 className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:shadow-lg transition-shadow"
               >
                 <FaYoutube className="text-white text-lg" />
-              </motion.a>
+              </Motion.a>
             </div>
-          </motion.div>
+          </Motion.div>
         </div>
 
         {/* Divider */}
         <div className="border-t border-white/10 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
               className="text-white/60 text-sm text-center md:text-left"
             >
               <p>
-                © {currentYear} Associação Rafael Vai Voar. Todos os direitos reservados.
+                {t('footer.copyright', { year: currentYear })}
               </p>
               <p className="mt-1">
-                CNPJ: 52.277.434/0001-05
+                {t('footer.cnpj')}
               </p>
               <p className="flex items-center justify-center md:justify-start gap-1 mt-2">
-                Feito com <FiHeart className="text-red-500 animate-pulse" /> para transformar vidas
+                <Trans
+                  i18nKey="footer.madeWith"
+                  components={[<FiHeart key="0" className="text-red-500 animate-pulse" />]}
+                />
               </p>
-            </motion.div>
+            </Motion.div>
 
             {/* Back to Top */}
-            <motion.button
+            <Motion.button
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
@@ -199,17 +202,17 @@ const Footer = () => {
               className="group flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-all"
             >
               <span className="text-white/70 group-hover:text-dourado-suave transition-colors">
-                Voltar ao topo
+                {t('footer.backToTop')}
               </span>
               <div className="w-8 h-8 bg-dourado-suave rounded-full flex items-center justify-center group-hover:translate-y-[-2px] transition-transform">
                 <FiArrowUp className="text-preto-suave" />
               </div>
-            </motion.button>
+            </Motion.button>
           </div>
         </div>
 
         {/* Flying Airplane Animation */}
-        <motion.div
+        <Motion.div
           animate={{
             x: ['-100px', '100vw'],
             y: [0, -20, 0, 20, 0],
@@ -221,7 +224,7 @@ const Footer = () => {
           className="absolute top-20 left-0 opacity-20 pointer-events-none"
         >
           ✈️
-        </motion.div>
+        </Motion.div>
       </div>
     </footer>
   );

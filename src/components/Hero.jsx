@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { FiChevronDown } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 import DonationModal from './DonationModal';
 
 const Hero = () => {
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   const scrollToStory = () => {
     document.getElementById('story')?.scrollIntoView({ behavior: 'smooth' });
@@ -34,7 +36,7 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         {/* Logo */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -42,82 +44,81 @@ const Hero = () => {
         >
           <img
             src="/LogoRafael.png"
-            alt="Rafael Vai Voar"
+            alt={t('hero.logoAlt')}
             className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto rounded-full shadow-2xl ring-4 ring-white/30"
           />
-        </motion.div>
+        </Motion.div>
 
-        <motion.h1
+        <Motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6"
         >
           <span className="block mb-4 text-shadow-xl">
-            10 anos com a pior dor do mundo.
+            {t('hero.title.line1')}
           </span>
-          <motion.span
+          <Motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.8 }}
             className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-dourado-suave text-shadow-lg font-bold"
           >
-            O sonho de voar o manteve vivo.
-          </motion.span>
-        </motion.h1>
+            {t('hero.title.line2')}
+          </Motion.span>
+        </Motion.h1>
 
-        <motion.p
+        <Motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.5 }}
           className="text-lg sm:text-xl md:text-2xl text-white/90 font-light max-w-3xl mx-auto mb-12 text-shadow"
         >
-          Esta é a história de Rafael Regis e nossa luta para que nenhum brasileiro
-          sofra em silêncio com doenças raras
-        </motion.p>
+          {t('hero.subtitle')}
+        </Motion.p>
 
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 2 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <motion.button
+          <Motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToStory}
             className="px-10 py-4 bg-gradient-to-r from-azul-horizonte to-azul-ceu text-white font-semibold text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer"
-            aria-label="Conheça a história completa de Rafael Regis"
+            aria-label={t('hero.aria.story')}
           >
-            Conheça Nossa História
-          </motion.button>
-          <motion.button
+            {t('hero.buttons.story')}
+          </Motion.button>
+          <Motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsDonationModalOpen(true)}
             className="px-10 py-4 bg-white text-azul-horizonte font-semibold text-lg rounded-full border-2 border-azul-horizonte shadow-xl hover:bg-azul-horizonte hover:text-white transition-all duration-300"
-            aria-label="Apoie o movimento Rafael Vai Voar"
+            aria-label={t('hero.aria.support')}
           >
-            Apoie o Movimento
-          </motion.button>
-        </motion.div>
+            {t('hero.buttons.support')}
+          </Motion.button>
+        </Motion.div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      <Motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2.5 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
       >
-        <motion.div
+        <Motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
           className="flex flex-col items-center text-white cursor-pointer group"
           onClick={scrollToStory}
           role="button"
           tabIndex={0}
-          aria-label="Rolar para a próxima seção"
+          aria-label={t('hero.aria.scroll')}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
@@ -126,15 +127,15 @@ const Hero = () => {
           }}
         >
           <span className="text-sm mb-2 opacity-80 group-hover:opacity-100 transition-opacity">
-            Descubra mais
+            {t('hero.scroll.more')}
           </span>
           <FiChevronDown className="text-3xl" />
-        </motion.div>
-      </motion.div>
+        </Motion.div>
+      </Motion.div>
 
       {/* Decorative Elements */}
       <div className="absolute top-10 left-10 z-20" aria-hidden="true">
-        <motion.div
+        <Motion.div
           animate={{
             rotate: [0, 360],
             x: [0, 100, 0],
@@ -144,10 +145,10 @@ const Hero = () => {
           className="opacity-30"
         >
           ✈️
-        </motion.div>
+        </Motion.div>
       </div>
       <div className="absolute top-20 right-20 z-20" aria-hidden="true">
-        <motion.div
+        <Motion.div
           animate={{
             rotate: [0, -360],
             x: [0, -80, 0],
@@ -157,7 +158,7 @@ const Hero = () => {
           className="opacity-30"
         >
           ✈️
-        </motion.div>
+        </Motion.div>
       </div>
 
       {/* Donation Modal */}

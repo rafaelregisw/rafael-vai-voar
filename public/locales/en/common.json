@@ -1,0 +1,277 @@
+{
+  "languageSwitcher": {
+    "label": "Language",
+    "ariaLabel": "Select language"
+  },
+  "whatsapp": {
+    "floatingMessage": "Hi! I found you through the website and I'd like to learn more about the Rafael Vai Voar movement."
+  },
+  "hero": {
+    "logoAlt": "Rafael Vai Voar",
+    "title": {
+      "line1": "10 years with the worst pain in the world.",
+      "line2": "The dream of flying kept him alive."
+    },
+    "subtitle": "This is the story of Rafael Regis and our fight so that no Brazilian suffers in silence with rare diseases",
+    "buttons": {
+      "story": "Discover Our Story",
+      "support": "Support the Movement"
+    },
+    "scroll": {
+      "more": "Learn more"
+    },
+    "aria": {
+      "story": "Read Rafael Regis' full story",
+      "support": "Support the Rafael Vai Voar movement",
+      "scroll": "Scroll to the next section"
+    }
+  },
+  "story": {
+    "heading": "A Journey of <0>Resilience</0>",
+    "description": "From a dream interrupted to flight regained, discover each chapter of this story that inspired millions and reached the UN",
+    "timeline": {
+      "startNightmare": {
+        "title": "The Beginning of the Nightmare",
+        "description": "At 19, Rafael was a young bodybuilder, newly married and full of dreams. A simple ringing in his ear marked the start of a journey of unimaginable pain."
+      },
+      "decadeDarkness": {
+        "title": "A Decade in the Dark",
+        "description": "10 years of 10/10 pain, 24 hours a day. Over 100 doctors consulted, zero diagnosis. Neuralgia of the intermediate nerve, known as the \"suicide disease\", pushed every limit."
+      },
+      "loveAnchor": {
+        "title": "The Love That Sustains",
+        "description": "Luana, his wife, became his anchor. In the darkest moments, when pain felt unbeatable, unconditional love was the light that kept him alive."
+      },
+      "worldJourney": {
+        "title": "A Global Journey",
+        "description": "After years searching, hope emerged in Germany with Dr. Sudhoff. More than 50,000 people worldwide came together to make treatment possible."
+      },
+      "lifeSavingSurgery": {
+        "title": "The Life-Saving Surgery",
+        "description": "At UConn Health in the United States, Rafael finally found relief. The complex surgery succeeded, ending a decade of uninterrupted suffering."
+      },
+      "patientToAdvocate": {
+        "title": "From Patient to Advocate",
+        "description": "Rafael turned pain into purpose. Recognized at the UN, the Chamber of Deputies, and the Senate, he now fights for public policies so that no Brazilian suffers in silence with rare diseases."
+      },
+      "rafaelWillFly": {
+        "title": "Rafael Will Fly",
+        "description": "The dream of becoming a pilot, which kept him alive through years of pain, is taking off again. Rafael is back on the simulators, proving no dream is too big when there is hope."
+      }
+    },
+    "quote": "\"Pain taught me that <0>no dream</0> should die for lack of <0>hope</0>\"",
+    "quoteAuthor": "- Rafael Regis Azevedo"
+  },
+  "numbers": {
+    "heading": "Numbers that <0>Move</0>",
+    "description": "Each number tells a part of this extraordinary journey of resilience and hope",
+    "stats": {
+      "daysPain": {
+        "label": "Days of Uninterrupted Pain",
+        "description": "10 years, 24 hours a day, 10/10"
+      },
+      "doctors": {
+        "label": "Doctors Consulted",
+        "description": "No diagnosis for a decade"
+      },
+      "worldCases": {
+        "label": "Cases Worldwide",
+        "description": "Rafael is the only known case in Brazil"
+      },
+      "donors": {
+        "label": "People Who Donated",
+        "description": "A global united effort for Rafael's life"
+      },
+      "reached": {
+        "label": "People Reached",
+        "description": "A story that inspired Brazil"
+      },
+      "recognitions": {
+        "label": "Official Recognitions",
+        "description": "UN, Chamber of Deputies, and Senate"
+      }
+    },
+    "bottomQuote": "\"Each number represents a battle won,<1/>each statistic, a reason to <0>never give up</0>.\""
+  },
+  "journey": {
+    "heading": "A <0>Global</0> Journey",
+    "description": "From Goiânia to the United Nations, the relentless search for answers and treatment crossed continents and inspired the world",
+    "locations": {
+      "brazil": {
+        "name": "Brazil",
+        "description": "100+ doctors consulted, zero diagnosis",
+        "detail": "For 10 years, Rafael visited hospitals and clinics across Brazil. No doctor could diagnose his rare condition."
+      },
+      "germany": {
+        "name": "Germany",
+        "description": "Dr. Sudhoff: the first hope",
+        "detail": "In Bielefeld, Germany, Dr. Sudhoff was the first to correctly identify neuralgia of the intermediate nerve and propose a treatment."
+      },
+      "usa": {
+        "name": "United States",
+        "description": "UConn Health: the life-saving surgery",
+        "detail": "At the University of Connecticut, the medical team performed the complex surgery that finally freed Rafael from a decade of pain."
+      },
+      "un": {
+        "name": "UN - New York",
+        "description": "A global voice for patients living with pain",
+        "detail": "Rafael brought his story to the UN, advocating for global public policies for patients with rare diseases and extreme chronic pain."
+      }
+    },
+    "stats": {
+      "countriesVisited": "Countries visited",
+      "citiesCovered": "Cities covered",
+      "kmTraveled": "Kilometers traveled",
+      "lifeSaved": "Life saved"
+    }
+  },
+  "video": {
+    "heading": "Key <0>Moments</0>",
+    "description": "Follow the defining moments of Rafael's journey. A story of courage that inspires the world.",
+    "main": {
+      "thumbnailAlt": "Domingo Espetacular",
+      "title": "Domingo Espetacular",
+      "subtitle": "The full story of the surgery in the U.S. that changed everything",
+      "iframeTitle": "Rafael Regis' story"
+    },
+    "othersTitle": "Other Key Videos",
+    "cards": {
+      "onu": {
+        "title": "Recognition at the UN",
+        "description": "A historic moment"
+      },
+      "cirurgia": {
+        "title": "Surgery in the U.S.",
+        "description": "The operation that changed everything"
+      },
+      "simuladores": {
+        "title": "Back to the Simulators",
+        "description": "Back to the dream"
+      }
+    }
+  },
+  "manifesto": {
+    "heading": "Our <0>Manifesto</0>",
+    "description": "For a Brazil where no pain is ignored and no dream is destroyed for lack of access to health care",
+    "quote": "\"Pain doesn't choose social class,<1/>but <0>treatment</0> does.<1/>That has to <0>change</0>.\"",
+    "quoteAuthor": "— Rafael Regis Azevedo",
+    "points": {
+      "universalAccess": {
+        "title": "Universal Access",
+        "description": "Every Brazilian with a rare disease must have access to specialized treatments, regardless of financial condition."
+      },
+      "nationalProtocol": {
+        "title": "National Protocol",
+        "description": "Create a national protocol for extreme chronic pain, ensuring fast diagnosis and appropriate care."
+      },
+      "referenceCenters": {
+        "title": "Reference Centers",
+        "description": "Establish specialized centers in every region of Brazil to treat rare neurological conditions."
+      },
+      "susFastTrack": {
+        "title": "SUS Fast-Track",
+        "description": "A priority pathway in SUS for severe cases, removing bureaucracy that can cost lives."
+      },
+      "dignityInCare": {
+        "title": "Dignity in Treatment",
+        "description": "Humanize care, acknowledging invisible pain and providing integrated psychological support."
+      }
+    },
+    "join": {
+      "title": "Join this movement",
+      "description": "Your voice matters. By signing this manifesto, you join thousands of Brazilians in the fight for a fairer, more humane health system.",
+      "signButton": "Sign the Manifesto",
+      "signedMessage": "Manifesto signed! Thank you for your support."
+    },
+    "stats": {
+      "signatures": "Signatures",
+      "states": "States",
+      "cities": "Cities",
+      "bills": "Bills"
+    },
+    "finalQuote": "Together, we can turn <0>pain into purpose</0><1/>and <0>suffering into solutions</0>."
+  },
+  "cta": {
+    "heading": "Be Part of the <0>Movement</0>",
+    "description": "Your action can transform lives. Choose how you want to make a difference.",
+    "buttons": {
+      "support": "Support the Movement"
+    },
+    "cards": {
+      "share": {
+        "title": "Share",
+        "description": "Spread this story and help raise awareness"
+      },
+      "instagram": {
+        "title": "Follow on Instagram",
+        "description": "Keep up with updates and inspiring stories"
+      },
+      "youtube": {
+        "title": "YouTube",
+        "description": "Watch the full videos and documentaries",
+        "button": "Watch Videos"
+      }
+    },
+    "newsletter": {
+      "title": "Get Our Updates",
+      "description": "Stay up to date on news, milestones, and how you can help",
+      "emailPlaceholder": "Your best email",
+      "subscribeButton": "Subscribe",
+      "subscribed": "Subscribed! ✓",
+      "privacy": "We respect your privacy. No spam, only relevant content."
+    },
+    "impact": {
+      "supporters": "Supporters",
+      "reach": "Reach",
+      "shares": "Shares",
+      "committed": "Committed"
+    },
+    "shareText": "Learn Rafael Regis' story: 10 years with the worst pain in the world. The dream of flying kept him alive."
+  },
+  "donationModal": {
+    "title": "Support the <0>Movement</0>",
+    "subtitle": "Your donation transforms lives and strengthens the fight for public policies",
+    "pix": {
+      "title": "Donate via PIX",
+      "description": "Scan the QR code below with your banking app or use the PIX key",
+      "scanToDonate": "Scan to donate",
+      "keyLabel": "Or use our PIX key (email):",
+      "copyButton": "Copy PIX key",
+      "copied": "Copied!"
+    },
+    "tip": "💡 Tip: You can donate any amount. Every contribution makes a difference!",
+    "howTo": {
+      "title": "How to donate:",
+      "steps": {
+        "1": "Open your bank or wallet app",
+        "2": "Choose PIX and select \"Scan QR Code\" or \"PIX key\"",
+        "3": "Scan the code or paste the PIX key",
+        "4": "Enter the amount you want to donate and confirm"
+      }
+    },
+    "footer": "Associação Rafael Vai Voar • CNPJ: 52.277.434/0001-05"
+  },
+  "footer": {
+    "about": {
+      "title": "Associação <0>Rafael Vai Voar</0>",
+      "description": "Turning pain into purpose, we fight for public policies that ensure access to treatment for rare diseases and extreme chronic pain in Brazil.",
+      "quote": "\"No pain should be invisible. No dream should die for lack of access to health care.\""
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "story": "Our Story",
+      "manifesto": "Manifesto",
+      "testimonial": "Testimonial",
+      "contact": "Contact"
+    },
+    "connect": {
+      "title": "Connect",
+      "soon": "Coming soon"
+    },
+    "copyright": "© {{year}} Associação Rafael Vai Voar. All rights reserved.",
+    "cnpj": "CNPJ: 52.277.434/0001-05",
+    "madeWith": "Made with <0/> to transform lives",
+    "backToTop": "Back to top"
+  }
+}
+

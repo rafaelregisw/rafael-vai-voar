@@ -10,16 +10,18 @@ Landing page cinematográfica que conta a história inspiradora de Rafael Regis 
 - 📱 100% responsivo (mobile-first)
 - ⚡ Performance otimizada (< 2s loading)
 - 🎨 Animações suaves com Framer Motion
+- 🌍 Tradução automática (PT/EN/ES) + seletor de idioma
 - 🌐 SEO otimizado
 - ♿ Acessível
 
 ## 🛠️ Tecnologias
 
 - **Vite** - Build tool ultrarrápida
-- **React 18** - Framework JavaScript
+- **React 19** - Framework JavaScript
 - **TailwindCSS 3** - Estilização utility-first
 - **Framer Motion** - Animações avançadas
 - **React Icons** - Biblioteca de ícones
+- **i18next / react-i18next** - Internacionalização (PT/EN/ES)
 
 ## 🚀 Desenvolvimento Local
 
@@ -60,49 +62,64 @@ npm run build
 npm run preview
 ```
 
+## 🌍 Idiomas (i18n)
+
+O site detecta automaticamente o idioma do visitante (com fallback para `pt-BR`) e também permite escolher manualmente pelo seletor no canto superior direito.
+
+### Arquivos de tradução
+
+- `public/locales/pt/common.json`
+- `public/locales/en/common.json`
+- `public/locales/es/common.json`
+
+Preferência do usuário:
+- `localStorage`: `lang`
+- `cookie`: `lang`
+
 ## 📦 Estrutura do Projeto
 
 ```
 rafael-vai-voar/
 ├── src/
-│   ├── components/      # Componentes React
-│   │   ├── Hero.jsx     # Seção de abertura
-│   │   ├── Story.jsx    # Timeline da história
-│   │   ├── Numbers.jsx  # Estatísticas animadas
-│   │   ├── Journey.jsx  # Mapa da jornada mundial
-│   │   ├── Video.jsx    # Player de vídeo
-│   │   ├── Manifesto.jsx # Manifesto com parallax
-│   │   ├── CTA.jsx      # Call-to-action
-│   │   └── Footer.jsx   # Rodapé
-│   ├── App.jsx          # Componente principal
-│   ├── main.jsx         # Entry point
-│   └── index.css        # Estilos globais
-├── public/              # Assets estáticos
-├── index.html           # HTML principal
-├── package.json         # Dependências
-├── tailwind.config.js   # Configuração Tailwind
-├── vite.config.js       # Configuração Vite
-└── README.md           # Este arquivo
+│   ├── components/
+│   │   ├── CTA.jsx
+│   │   ├── DonationModal.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Hero.jsx
+│   │   ├── Journey.jsx
+│   │   ├── LanguageSwitcher.jsx
+│   │   ├── Manifesto.jsx
+│   │   ├── Numbers.jsx
+│   │   ├── Story.jsx
+│   │   └── Video.jsx
+│   ├── i18n/
+│   │   └── index.js
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── public/
+│   ├── assets/
+│   ├── locales/
+│   ├── robots.txt
+│   └── sitemap.xml
+├── Dockerfile
+├── docker-compose.yml
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── vite.config.js
+└── README.md
 ```
 
-## 🌐 Deploy no Coolify
+## 🌐 Deploy no Dokploy
 
-### Quick Deploy
+Este repositório está pronto para deploy automático via Dokploy: ao fazer push na branch `main`, o Dokploy (quando configurado) faz o build do `Dockerfile` e publica o site via Nginx.
 
-1. No Coolify, clique em **"Create a new Application"**
-2. Cole a URL: `https://github.com/rafaelregisw/rafael-vai-voar`
-3. Coolify detectará automaticamente as configurações
+Documentação: `DEPLOY_DOKPLOY.md`
 
-### Configurações
-
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
-- **Node Version**: 18+
-- **Port**: 3000 (produção)
-
-### Variáveis de Ambiente
-
-Não são necessárias variáveis de ambiente para este projeto.
+Se você usa Coolify, veja `DEPLOY_COOLIFY.md` (legado).
 
 ## 📊 Performance
 

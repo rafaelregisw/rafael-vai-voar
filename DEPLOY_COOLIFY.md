@@ -1,5 +1,7 @@
 # 🚀 Deploy no Coolify - Rafael Vai Voar
 
+> Nota: se o seu deploy é via **Dokploy**, veja `DEPLOY_DOKPLOY.md`. Este documento fica como referência para setups com **Coolify**.
+
 ## 📋 Pré-requisitos
 
 1. Coolify instalado e configurado

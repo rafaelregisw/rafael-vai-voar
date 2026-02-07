@@ -1,8 +1,10 @@
 import { useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion as Motion, useInView } from 'framer-motion';
 import { FiPlay } from 'react-icons/fi';
+import { Trans, useTranslation } from 'react-i18next';
 
 const Video = () => {
+  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const [playingVideos, setPlayingVideos] = useState({
     onu: false,
@@ -37,20 +39,14 @@ const Video = () => {
     {
       key: 'onu',
       id: 'KJPW01A1gmQ',
-      title: 'Reconhecimento na ONU',
-      description: 'Momento histórico'
     },
     {
       key: 'cirurgia',
       id: 'gtqN2V_DO_o',
-      title: 'Cirurgia nos EUA',
-      description: 'A operação que mudou tudo'
     },
     {
       key: 'simuladores',
       id: 'WosULAsvar0',
-      title: 'Retorno aos Simuladores',
-      description: 'De volta ao sonho'
     }
   ];
 
@@ -58,7 +54,7 @@ const Video = () => {
     <section className="py-20 md:py-32 bg-gradient-to-b from-cinza-suave to-white">
       <div className="max-container section-padding">
         {/* Section Header */}
-        <motion.div
+        <Motion.div
           ref={sectionRef}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -66,16 +62,15 @@ const Video = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-preto-suave mb-6">
-            Momentos <span className="gradient-text">Importantes</span>
+            <Trans i18nKey="video.heading" components={[<span key="0" className="gradient-text" />]} />
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Acompanhe os momentos marcantes da jornada de Rafael.
-            Uma história de coragem que inspira o mundo.
+            {t('video.description')}
           </p>
-        </motion.div>
+        </Motion.div>
 
         {/* Main Video Container */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -87,7 +82,7 @@ const Video = () => {
                 {/* Thumbnail */}
                 <img
                   src={thumbnailUrl}
-                  alt="Domingo Espetacular"
+                  alt={t('video.main.thumbnailAlt')}
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     // Fallback para qualidade menor se a imagem não carregar
@@ -105,7 +100,7 @@ const Video = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 
                 {/* Play Button */}
-                <motion.button
+                <Motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handlePlayClick}
@@ -114,15 +109,15 @@ const Video = () => {
                   <div className="w-20 h-20 md:w-24 md:h-24 bg-white/90 rounded-full flex items-center justify-center shadow-2xl group-hover:bg-white transition-all">
                     <FiPlay className="text-4xl md:text-5xl text-azul-horizonte ml-2" />
                   </div>
-                </motion.button>
+                </Motion.button>
 
                 {/* Video Info */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
                   <h3 className="text-2xl md:text-3xl font-bold mb-2 text-shadow-lg">
-                    Domingo Espetacular
+                    {t('video.main.title')}
                   </h3>
                   <p className="text-white/80 text-shadow">
-                    A história completa da cirurgia nos EUA que mudou tudo
+                    {t('video.main.subtitle')}
                   </p>
                 </div>
               </>
@@ -132,7 +127,7 @@ const Video = () => {
                 width="100%"
                 height="100%"
                 src={`https://www.youtube.com/embed/${mainVideoId}?autoplay=1&rel=0&modestbranding=1`}
-                title="História de Rafael Regis"
+                title={t('video.main.iframeTitle')}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -140,22 +135,22 @@ const Video = () => {
               />
             )}
           </div>
-        </motion.div>
+        </Motion.div>
 
         {/* Videos Grid */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-16 md:mt-20"
         >
           <h3 className="text-2xl md:text-3xl font-serif font-bold text-center text-preto-suave mb-10">
-            Outros Vídeos Importantes
+            {t('video.othersTitle')}
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {videos.map((video, index) => (
-              <motion.div
+              <Motion.div
                 key={video.key}
                 whileHover={{ y: -5 }}
                 className="group cursor-pointer"
@@ -169,7 +164,7 @@ const Video = () => {
                       {/* Thumbnail */}
                       <img
                         src={getThumbnailUrl(video.id, video.id === 'gtqN2V_DO_o' ? 'hqdefault' : 'maxresdefault')}
-                        alt={video.title}
+                        alt={t(`video.cards.${video.key}.title`)}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         onError={(e) => {
                           // Fallback para qualidade menor se a imagem não carregar
@@ -198,8 +193,12 @@ const Video = () => {
 
                       {/* Video Info */}
                       <div className="absolute bottom-0 left-0 right-0 p-4">
-                        <h4 className="text-white font-semibold text-shadow-lg">{video.title}</h4>
-                        <p className="text-white/80 text-sm text-shadow">{video.description}</p>
+                        <h4 className="text-white font-semibold text-shadow-lg">
+                          {t(`video.cards.${video.key}.title`)}
+                        </h4>
+                        <p className="text-white/80 text-sm text-shadow">
+                          {t(`video.cards.${video.key}.description`)}
+                        </p>
                       </div>
                     </>
                   ) : (
@@ -208,7 +207,7 @@ const Video = () => {
                       width="100%"
                       height="100%"
                       src={`https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0&modestbranding=1`}
-                      title={video.title}
+                      title={t(`video.cards.${video.key}.title`)}
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
@@ -216,10 +215,10 @@ const Video = () => {
                     />
                   )}
                 </div>
-              </motion.div>
+              </Motion.div>
             ))}
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
     </section>
   );

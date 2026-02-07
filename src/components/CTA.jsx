@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion as Motion, useInView } from 'framer-motion';
 import {
   FiInstagram,
   FiShare2,
@@ -12,9 +12,11 @@ import {
   FiDollarSign
 } from 'react-icons/fi';
 import { FaWhatsapp, FaYoutube } from 'react-icons/fa';
+import { Trans, useTranslation } from 'react-i18next';
 import DonationModal from './DonationModal';
 
 const CTA = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
@@ -33,7 +35,7 @@ const CTA = () => {
   };
 
   const shareUrl = "https://rafaelvaivoar.org.br";
-  const shareText = "Conheça a história de Rafael Regis - 10 anos com a pior dor do mundo. O sonho de voar o manteve vivo.";
+  const shareText = t('cta.shareText');
 
   const socialLinks = {
     whatsapp: `https://wa.me/19146093655?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`,
@@ -46,7 +48,7 @@ const CTA = () => {
       {/* Animated Gradient Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-azul-horizonte via-azul-ceu to-dourado-suave/20 animate-gradient" />
-        <motion.div
+        <Motion.div
           animate={{
             backgroundPosition: ['0% 0%', '100% 100%'],
           }}
@@ -65,21 +67,21 @@ const CTA = () => {
 
       <div className="relative z-10 max-container section-padding">
         {/* Main CTA */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 text-shadow-xl">
-            Faça Parte do <span className="text-dourado-suave">Movimento</span>
+            <Trans i18nKey="cta.heading" components={[<span key="0" className="text-dourado-suave" />]} />
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-10 text-shadow">
-            Sua ação pode transformar vidas. Escolha como você quer fazer a diferença.
+            {t('cta.description')}
           </p>
 
           {/* Main Donation Button */}
-          <motion.button
+          <Motion.button
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -88,7 +90,7 @@ const CTA = () => {
             onClick={() => setIsDonationModalOpen(true)}
             className="relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-dourado-suave via-yellow-300 to-dourado-suave text-preto-suave font-bold text-lg rounded-full shadow-2xl hover:shadow-3xl transition-all group"
           >
-            <motion.div
+            <Motion.div
               animate={{
                 scale: [1, 1.2, 1],
                 rotate: [0, 10, -10, 0]
@@ -100,12 +102,12 @@ const CTA = () => {
               }}
             >
               <FiHeart className="text-2xl" />
-            </motion.div>
-            <span>Apoie o Movimento</span>
+            </Motion.div>
+            <span>{t('cta.buttons.support')}</span>
             <FiDollarSign className="text-xl opacity-70 group-hover:opacity-100 transition-opacity" />
 
             {/* Pulse Effect */}
-            <motion.div
+            <Motion.div
               className="absolute inset-0 rounded-full bg-gradient-to-r from-dourado-suave to-yellow-300"
               animate={{
                 scale: [1, 1.1, 1],
@@ -117,13 +119,13 @@ const CTA = () => {
                 ease: 'easeInOut'
               }}
             />
-          </motion.button>
-        </motion.div>
+          </Motion.button>
+        </Motion.div>
 
         {/* Action Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {/* Share Card */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -132,12 +134,12 @@ const CTA = () => {
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center group-hover:scale-110 transition-transform">
               <FiShare2 className="text-3xl text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-3">Compartilhe</h3>
+            <h3 className="text-2xl font-bold text-white mb-3">{t('cta.cards.share.title')}</h3>
             <p className="text-white/80 mb-6 font-semibold">
-              Espalhe esta história e ajude a conscientizar mais pessoas
+              {t('cta.cards.share.description')}
             </p>
             <div className="flex justify-center gap-3">
-              <motion.a
+              <Motion.a
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.95 }}
                 href={socialLinks.whatsapp}
@@ -147,8 +149,8 @@ const CTA = () => {
                 title="WhatsApp"
               >
                 <FaWhatsapp className="text-xl" />
-              </motion.a>
-              <motion.a
+              </Motion.a>
+              <Motion.a
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.95 }}
                 href={socialLinks.instagram}
@@ -158,8 +160,8 @@ const CTA = () => {
                 title="Instagram"
               >
                 <FiInstagram className="text-xl" />
-              </motion.a>
-              <motion.a
+              </Motion.a>
+              <Motion.a
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.95 }}
                 href={socialLinks.youtube}
@@ -169,12 +171,12 @@ const CTA = () => {
                 title="YouTube"
               >
                 <FaYoutube className="text-xl" />
-              </motion.a>
+              </Motion.a>
             </div>
-          </motion.div>
+          </Motion.div>
 
           {/* Instagram Card */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -183,11 +185,11 @@ const CTA = () => {
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 flex items-center justify-center group-hover:scale-110 transition-transform">
               <FiInstagram className="text-3xl text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-3">Siga no Instagram</h3>
+            <h3 className="text-2xl font-bold text-white mb-3">{t('cta.cards.instagram.title')}</h3>
             <p className="text-white/80 mb-6">
-              Acompanhe as atualizações e histórias inspiradoras
+              {t('cta.cards.instagram.description')}
             </p>
-            <motion.a
+            <Motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href={socialLinks.instagram}
@@ -196,11 +198,11 @@ const CTA = () => {
               className="inline-block px-8 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all"
             >
               @rafaelvaivoar
-            </motion.a>
-          </motion.div>
+            </Motion.a>
+          </Motion.div>
 
           {/* YouTube Card */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -209,11 +211,11 @@ const CTA = () => {
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-red-600 to-red-500 flex items-center justify-center group-hover:scale-110 transition-transform">
               <FaYoutube className="text-3xl text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-3">YouTube</h3>
+            <h3 className="text-2xl font-bold text-white mb-3">{t('cta.cards.youtube.title')}</h3>
             <p className="text-white/80 mb-6">
-              Assista aos vídeos e documentários completos
+              {t('cta.cards.youtube.description')}
             </p>
-            <motion.a
+            <Motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href={socialLinks.youtube}
@@ -221,13 +223,13 @@ const CTA = () => {
               rel="noopener noreferrer"
               className="inline-block px-8 py-3 bg-red-600 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all"
             >
-              Assistir Vídeos
-            </motion.a>
-          </motion.div>
+              {t('cta.cards.youtube.button')}
+            </Motion.a>
+          </Motion.div>
         </div>
 
         {/* Newsletter Section */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -236,10 +238,10 @@ const CTA = () => {
           <div className="text-center mb-8">
             <FiMail className="text-5xl text-dourado-suave mx-auto mb-4" />
             <h3 className="text-3xl font-serif font-bold text-white mb-3">
-              Receba Nossas Atualizações
+              {t('cta.newsletter.title')}
             </h3>
             <p className="text-white/80">
-              Fique por dentro das novidades, conquistas e como você pode ajudar
+              {t('cta.newsletter.description')}
             </p>
           </div>
 
@@ -249,11 +251,11 @@ const CTA = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Seu melhor e-mail"
+                placeholder={t('cta.newsletter.emailPlaceholder')}
                 className="flex-1 px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/60 focus:outline-none focus:bg-white/20 transition-all"
                 required
               />
-              <motion.button
+              <Motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
@@ -261,24 +263,24 @@ const CTA = () => {
               >
                 {subscribed ? (
                   <>
-                    Inscrito! ✓
+                    {t('cta.newsletter.subscribed')}
                   </>
                 ) : (
                   <>
-                    Inscrever-se
+                    {t('cta.newsletter.subscribeButton')}
                     <FiSend className="text-xl" />
                   </>
                 )}
-              </motion.button>
+              </Motion.button>
             </div>
             <p className="text-white/60 text-sm text-center mt-4">
-              Respeitamos sua privacidade. Sem spam, apenas conteúdo relevante.
+              {t('cta.newsletter.privacy')}
             </p>
           </form>
-        </motion.div>
+        </Motion.div>
 
         {/* Impact Stats */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 1, delay: 0.6 }}
@@ -287,24 +289,24 @@ const CTA = () => {
           <div>
             <FiUsers className="text-4xl text-white mx-auto mb-3" />
             <p className="text-3xl font-bold text-dourado-suave">10K+</p>
-            <p className="text-white/80">Apoiadores</p>
+            <p className="text-white/80">{t('cta.impact.supporters')}</p>
           </div>
           <div>
             <FiMessageCircle className="text-4xl text-white mx-auto mb-3" />
             <p className="text-3xl font-bold text-dourado-suave">500K+</p>
-            <p className="text-white/80">Alcance</p>
+            <p className="text-white/80">{t('cta.impact.reach')}</p>
           </div>
           <div>
             <FiShare2 className="text-4xl text-white mx-auto mb-3" />
             <p className="text-3xl font-bold text-dourado-suave">50K+</p>
-            <p className="text-white/80">Compartilhamentos</p>
+            <p className="text-white/80">{t('cta.impact.shares')}</p>
           </div>
           <div>
             <FiHeart className="text-4xl text-white mx-auto mb-3" />
             <p className="text-3xl font-bold text-dourado-suave">100%</p>
-            <p className="text-white/80">Comprometidos</p>
+            <p className="text-white/80">{t('cta.impact.committed')}</p>
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
 
       {/* Donation Modal */}

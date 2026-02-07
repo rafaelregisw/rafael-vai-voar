@@ -1,0 +1,277 @@
+{
+  "languageSwitcher": {
+    "label": "Idioma",
+    "ariaLabel": "Seleccionar idioma"
+  },
+  "whatsapp": {
+    "floatingMessage": "¡Hola! Te encontré por el sitio y me gustaría saber más sobre el movimiento Rafael Vai Voar."
+  },
+  "hero": {
+    "logoAlt": "Rafael Vai Voar",
+    "title": {
+      "line1": "10 años con el peor dolor del mundo.",
+      "line2": "El sueño de volar lo mantuvo con vida."
+    },
+    "subtitle": "Esta es la historia de Rafael Regis y nuestra lucha para que ningún brasileño sufra en silencio con enfermedades raras",
+    "buttons": {
+      "story": "Conoce Nuestra Historia",
+      "support": "Apoya el Movimiento"
+    },
+    "scroll": {
+      "more": "Descubre más"
+    },
+    "aria": {
+      "story": "Conoce la historia completa de Rafael Regis",
+      "support": "Apoya el movimiento Rafael Vai Voar",
+      "scroll": "Desplazarse a la siguiente sección"
+    }
+  },
+  "story": {
+    "heading": "Un Viaje de <0>Superación</0>",
+    "description": "Del sueño interrumpido al vuelo retomado, conoce cada capítulo de esta historia que inspiró a millones y llegó hasta la ONU",
+    "timeline": {
+      "startNightmare": {
+        "title": "El Inicio de la Pesadilla",
+        "description": "A los 19 años, Rafael era un joven fisicoculturista, recién casado y lleno de sueños. Un simple zumbido en el oído marcó el inicio de un viaje de dolor inimaginable."
+      },
+      "decadeDarkness": {
+        "title": "La Década en la Oscuridad",
+        "description": "10 años con dolor nivel 10/10, 24 horas al día. Más de 100 médicos consultados, cero diagnóstico. La neuralgia del nervio intermedio, conocida como la \"enfermedad del suicidio\", puso a prueba todos los límites."
+      },
+      "loveAnchor": {
+        "title": "El Amor que Sostiene",
+        "description": "Luana, su esposa, se convirtió en su ancla. En los momentos más oscuros, cuando el dolor parecía invencible, el amor incondicional fue la luz que lo mantuvo con vida."
+      },
+      "worldJourney": {
+        "title": "La Jornada Mundial",
+        "description": "Tras años de búsqueda, la esperanza surgió en Alemania con el Dr. Sudhoff. Más de 50 mil personas en todo el mundo se unieron para hacer posible el tratamiento."
+      },
+      "lifeSavingSurgery": {
+        "title": "La Cirugía Salvadora",
+        "description": "En UConn Health, Estados Unidos, Rafael finalmente encontró alivio. La cirugía compleja fue un éxito, marcando el fin de una década de sufrimiento ininterrumpido."
+      },
+      "patientToAdvocate": {
+        "title": "De Paciente a Defensor",
+        "description": "Rafael transformó su dolor en propósito. Reconocido en la ONU, en la Cámara y en el Senado, hoy lucha por políticas públicas para que ningún brasileño sufra en silencio con enfermedades raras."
+      },
+      "rafaelWillFly": {
+        "title": "Rafael Va a Volar",
+        "description": "El sueño de ser piloto, que lo mantuvo con vida durante años de dolor, está siendo retomado. Rafael volvió a los simuladores, demostrando que ningún sueño es demasiado grande cuando hay esperanza."
+      }
+    },
+    "quote": "\"El dolor me enseñó que <0>ningún sueño</0> debe morir por falta de <0>esperanza</0>\"",
+    "quoteAuthor": "- Rafael Regis Azevedo"
+  },
+  "numbers": {
+    "heading": "Números que <0>Impactan</0>",
+    "description": "Cada número cuenta una parte de este viaje extraordinario de superación y esperanza",
+    "stats": {
+      "daysPain": {
+        "label": "Días de Dolor Ininterrumpido",
+        "description": "10 años, 24 horas al día, nivel 10/10"
+      },
+      "doctors": {
+        "label": "Médicos Consultados",
+        "description": "Sin diagnóstico durante una década"
+      },
+      "worldCases": {
+        "label": "Casos en el Mundo",
+        "description": "Rafael es el único caso conocido en Brasil"
+      },
+      "donors": {
+        "label": "Personas que Donaron",
+        "description": "Una unión mundial por la vida de Rafael"
+      },
+      "reached": {
+        "label": "Personas Alcanzadas",
+        "description": "Una historia que inspiró a Brasil"
+      },
+      "recognitions": {
+        "label": "Reconocimientos Oficiales",
+        "description": "ONU, Cámara y Senado"
+      }
+    },
+    "bottomQuote": "\"Cada número representa una batalla ganada,<1/>cada estadística, una razón para <0>no rendirse</0>.\""
+  },
+  "journey": {
+    "heading": "Una Jornada <0>Mundial</0>",
+    "description": "De Goiânia a la ONU, la búsqueda incansable de respuestas y tratamiento cruzó continentes e inspiró al mundo",
+    "locations": {
+      "brazil": {
+        "name": "Brasil",
+        "description": "100+ médicos consultados, cero diagnóstico",
+        "detail": "Durante 10 años, Rafael recorrió hospitales y clínicas por todo Brasil. Ningún médico logró diagnosticar su condición rara."
+      },
+      "germany": {
+        "name": "Alemania",
+        "description": "Dr. Sudhoff: la primera esperanza",
+        "detail": "En Bielefeld, Alemania, el Dr. Sudhoff fue el primero en identificar correctamente la neuralgia del nervio intermedio y proponer un tratamiento."
+      },
+      "usa": {
+        "name": "Estados Unidos",
+        "description": "UConn Health: la cirugía salvadora",
+        "detail": "En la Universidad de Connecticut, el equipo médico realizó la cirugía compleja que finalmente liberó a Rafael de una década de dolor."
+      },
+      "un": {
+        "name": "ONU - Nueva York",
+        "description": "Una voz global para pacientes con dolor",
+        "detail": "Rafael llevó su historia a la ONU, defendiendo políticas públicas globales para pacientes con enfermedades raras y dolor crónico extremo."
+      }
+    },
+    "stats": {
+      "countriesVisited": "Países visitados",
+      "citiesCovered": "Ciudades recorridas",
+      "kmTraveled": "Kilómetros viajados",
+      "lifeSaved": "Vida salvada"
+    }
+  },
+  "video": {
+    "heading": "Momentos <0>Importantes</0>",
+    "description": "Acompaña los momentos más importantes de la jornada de Rafael. Una historia de coraje que inspira al mundo.",
+    "main": {
+      "thumbnailAlt": "Domingo Espetacular",
+      "title": "Domingo Espetacular",
+      "subtitle": "La historia completa de la cirugía en EE. UU. que lo cambió todo",
+      "iframeTitle": "Historia de Rafael Regis"
+    },
+    "othersTitle": "Otros Videos Importantes",
+    "cards": {
+      "onu": {
+        "title": "Reconocimiento en la ONU",
+        "description": "Momento histórico"
+      },
+      "cirurgia": {
+        "title": "Cirugía en EE. UU.",
+        "description": "La operación que cambió todo"
+      },
+      "simuladores": {
+        "title": "Regreso a los Simuladores",
+        "description": "De vuelta al sueño"
+      }
+    }
+  },
+  "manifesto": {
+    "heading": "Nuestro <0>Manifiesto</0>",
+    "description": "Por un Brasil donde ningún dolor sea ignorado y ningún sueño sea destruido por falta de acceso a la salud",
+    "quote": "\"El dolor no elige clase social,<1/>pero el <0>tratamiento</0> sí.<1/>Esto tiene que <0>cambiar</0>.\"",
+    "quoteAuthor": "— Rafael Regis Azevedo",
+    "points": {
+      "universalAccess": {
+        "title": "Acceso Universal",
+        "description": "Todo brasileño con una enfermedad rara debe tener acceso a tratamientos especializados, independientemente de su condición financiera."
+      },
+      "nationalProtocol": {
+        "title": "Protocolo Nacional",
+        "description": "Crear un protocolo nacional para dolor crónico extremo, garantizando diagnóstico rápido y tratamiento adecuado."
+      },
+      "referenceCenters": {
+        "title": "Centros de Referencia",
+        "description": "Establecer centros especializados en cada región de Brasil para tratar condiciones neurológicas raras."
+      },
+      "susFastTrack": {
+        "title": "Fast-Track SUS",
+        "description": "Sistema prioritario en el SUS para casos graves, eliminando la burocracia que puede costar vidas."
+      },
+      "dignityInCare": {
+        "title": "Dignidad en el Tratamiento",
+        "description": "Humanizar la atención, reconociendo el dolor invisible y ofreciendo apoyo psicológico integrado."
+      }
+    },
+    "join": {
+      "title": "Únete a este movimiento",
+      "description": "Tu voz importa. Al firmar este manifiesto, te unes a miles de brasileños en la lucha por un sistema de salud más justo y humano.",
+      "signButton": "Firmar el Manifiesto",
+      "signedMessage": "¡Manifiesto firmado! Gracias por el apoyo."
+    },
+    "stats": {
+      "signatures": "Firmas",
+      "states": "Estados",
+      "cities": "Ciudades",
+      "bills": "Proyectos de Ley"
+    },
+    "finalQuote": "Juntos, podemos transformar <0>dolor en propósito</0><1/>y <0>sufrimiento en solución</0>."
+  },
+  "cta": {
+    "heading": "Forma Parte del <0>Movimiento</0>",
+    "description": "Tu acción puede transformar vidas. Elige cómo quieres marcar la diferencia.",
+    "buttons": {
+      "support": "Apoya el Movimiento"
+    },
+    "cards": {
+      "share": {
+        "title": "Comparte",
+        "description": "Difunde esta historia y ayuda a concientizar a más personas"
+      },
+      "instagram": {
+        "title": "Sigue en Instagram",
+        "description": "Acompaña las actualizaciones e historias inspiradoras"
+      },
+      "youtube": {
+        "title": "YouTube",
+        "description": "Mira los videos y documentales completos",
+        "button": "Ver Videos"
+      }
+    },
+    "newsletter": {
+      "title": "Recibe Nuestras Actualizaciones",
+      "description": "Mantente al día con novedades, logros y cómo puedes ayudar",
+      "emailPlaceholder": "Tu mejor correo",
+      "subscribeButton": "Suscribirse",
+      "subscribed": "¡Suscrito! ✓",
+      "privacy": "Respetamos tu privacidad. Sin spam, solo contenido relevante."
+    },
+    "impact": {
+      "supporters": "Apoyadores",
+      "reach": "Alcance",
+      "shares": "Compartidos",
+      "committed": "Comprometidos"
+    },
+    "shareText": "Conoce la historia de Rafael Regis: 10 años con el peor dolor del mundo. El sueño de volar lo mantuvo con vida."
+  },
+  "donationModal": {
+    "title": "Apoya el <0>Movimiento</0>",
+    "subtitle": "Tu donación transforma vidas y fortalece la lucha por políticas públicas",
+    "pix": {
+      "title": "Haz una donación vía PIX",
+      "description": "Escanea el código QR con la app de tu banco o usa la clave PIX",
+      "scanToDonate": "Escanea para donar",
+      "keyLabel": "O usa nuestra clave PIX (correo):",
+      "copyButton": "Copiar clave PIX",
+      "copied": "¡Copiado!"
+    },
+    "tip": "💡 Consejo: Puedes donar cualquier monto. ¡Toda contribución hace la diferencia!",
+    "howTo": {
+      "title": "Cómo donar:",
+      "steps": {
+        "1": "Abre la app de tu banco o billetera digital",
+        "2": "Elige PIX y selecciona \"Leer QR\" o \"Clave PIX\"",
+        "3": "Escanea el código o pega la clave PIX",
+        "4": "Ingresa el valor que deseas donar y confirma"
+      }
+    },
+    "footer": "Associação Rafael Vai Voar • CNPJ: 52.277.434/0001-05"
+  },
+  "footer": {
+    "about": {
+      "title": "Associação <0>Rafael Vai Voar</0>",
+      "description": "Transformando dolor en propósito, luchamos por políticas públicas que garanticen acceso a tratamientos para enfermedades raras y dolor crónico extremo en Brasil.",
+      "quote": "\"Ningún dolor debería ser invisible. Ningún sueño debería morir por falta de acceso a la salud.\""
+    },
+    "quickLinks": {
+      "title": "Enlaces Rápidos",
+      "story": "Nuestra Historia",
+      "manifesto": "Manifiesto",
+      "testimonial": "Testimonio",
+      "contact": "Contacto"
+    },
+    "connect": {
+      "title": "Conéctate",
+      "soon": "Próximamente"
+    },
+    "copyright": "© {{year}} Associação Rafael Vai Voar. Todos los derechos reservados.",
+    "cnpj": "CNPJ: 52.277.434/0001-05",
+    "madeWith": "Hecho con <0/> para transformar vidas",
+    "backToTop": "Volver arriba"
+  }
+}
+

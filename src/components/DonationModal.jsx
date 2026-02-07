@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiCopy, FiCheckCircle, FiSmartphone } from 'react-icons/fi';
 import { QRCodeCanvas } from 'qrcode.react';
+import { Trans, useTranslation } from 'react-i18next';
 import { generateRafaelVaiVoarPix } from '../utils/pixGenerator';
 
 const DonationModal = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const pixKey = 'rafaelregis95@gmail.com';
 
@@ -22,7 +24,7 @@ const DonationModal = ({ isOpen, onClose }) => {
       {isOpen && (
         <>
           {/* Overlay */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -31,7 +33,7 @@ const DonationModal = ({ isOpen, onClose }) => {
           />
 
           {/* Modal */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
@@ -43,30 +45,30 @@ const DonationModal = ({ isOpen, onClose }) => {
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">
-                    Apoie o <span className="text-dourado-suave">Movimento</span>
+                    <Trans i18nKey="donationModal.title" components={[<span key="0" className="text-dourado-suave" />]} />
                   </h2>
                   <p className="text-white/80">
-                    Sua doação transforma vidas e luta por políticas públicas
+                    {t('donationModal.subtitle')}
                   </p>
                 </div>
-                <motion.button
+                <Motion.button
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={onClose}
                   className="text-white/60 hover:text-white transition-colors"
                 >
                   <FiX className="text-2xl" />
-                </motion.button>
+                </Motion.button>
               </div>
 
               {/* Instrução PIX */}
               <div className="bg-gradient-to-br from-dourado-suave/20 to-yellow-300/10 border border-dourado-suave/30 rounded-2xl p-6 mb-6">
                 <div className="flex items-center gap-3 mb-3">
                   <FiSmartphone className="text-dourado-suave text-2xl" />
-                  <h3 className="text-xl font-bold text-dourado-suave">Faça uma doação via PIX</h3>
+                  <h3 className="text-xl font-bold text-dourado-suave">{t('donationModal.pix.title')}</h3>
                 </div>
                 <p className="text-white/80 text-sm">
-                  Escaneie o QR Code abaixo com o app do seu banco ou use a chave PIX
+                  {t('donationModal.pix.description')}
                 </p>
               </div>
 
@@ -90,18 +92,18 @@ const DonationModal = ({ isOpen, onClose }) => {
                       }}
                     />
                   </div>
-                  <p className="text-white/60 text-sm">Escaneie para doar</p>
+                  <p className="text-white/60 text-sm">{t('donationModal.pix.scanToDonate')}</p>
                 </div>
 
                 {/* Chave PIX */}
                 <div className="flex flex-col justify-center space-y-4">
                   <div>
-                    <h4 className="text-white/60 text-sm mb-2">Ou use nossa chave PIX (E-mail):</h4>
+                    <h4 className="text-white/60 text-sm mb-2">{t('donationModal.pix.keyLabel')}</h4>
                     <div className="bg-white/10 border border-white/20 rounded-xl p-4">
                       <p className="text-white font-mono text-sm md:text-base break-all mb-3">
                         {pixKey}
                       </p>
-                      <motion.button
+                      <Motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={handleCopyPix}
@@ -110,22 +112,22 @@ const DonationModal = ({ isOpen, onClose }) => {
                         {copied ? (
                           <>
                             <FiCheckCircle className="text-lg" />
-                            Copiado!
+                            {t('donationModal.pix.copied')}
                           </>
                         ) : (
                           <>
                             <FiCopy className="text-lg" />
-                            Copiar chave PIX
+                            {t('donationModal.pix.copyButton')}
                           </>
                         )}
-                      </motion.button>
+                      </Motion.button>
                     </div>
                   </div>
 
                   {/* Info adicional */}
                   <div className="bg-azul-horizonte/20 border border-azul-horizonte/30 rounded-lg p-3">
                     <p className="text-azul-ceu text-xs">
-                      💡 Dica: Você pode doar qualquer valor. Toda contribuição faz a diferença!
+                      {t('donationModal.tip')}
                     </p>
                   </div>
                 </div>
@@ -133,23 +135,23 @@ const DonationModal = ({ isOpen, onClose }) => {
 
               {/* Como doar */}
               <div className="border-t border-white/10 pt-6">
-                <h4 className="text-white font-semibold mb-3">Como doar:</h4>
+                <h4 className="text-white font-semibold mb-3">{t('donationModal.howTo.title')}</h4>
                 <div className="space-y-2 text-white/70 text-sm">
                   <div className="flex items-start gap-2">
                     <span className="text-dourado-suave">1.</span>
-                    <p>Abra o app do seu banco ou carteira digital</p>
+                    <p>{t('donationModal.howTo.steps.1')}</p>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-dourado-suave">2.</span>
-                    <p>Escolha a opção PIX e selecione "Ler QR Code" ou "Chave PIX"</p>
+                    <p>{t('donationModal.howTo.steps.2')}</p>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-dourado-suave">3.</span>
-                    <p>Escaneie o código ou cole a chave PIX</p>
+                    <p>{t('donationModal.howTo.steps.3')}</p>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-dourado-suave">4.</span>
-                    <p>Digite o valor que deseja doar e confirme</p>
+                    <p>{t('donationModal.howTo.steps.4')}</p>
                   </div>
                 </div>
               </div>
@@ -157,11 +159,11 @@ const DonationModal = ({ isOpen, onClose }) => {
               {/* Footer */}
               <div className="mt-6 text-center">
                 <p className="text-white/40 text-xs">
-                  Associação Rafael Vai Voar • CNPJ: 52.277.434/0001-05
+                  {t('donationModal.footer')}
                 </p>
               </div>
             </div>
-          </motion.div>
+          </Motion.div>
         </>
       )}
     </AnimatePresence>
