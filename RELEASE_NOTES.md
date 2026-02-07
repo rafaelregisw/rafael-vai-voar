@@ -66,3 +66,25 @@ Projeto pronto para push e deploy automático via Coolify.
 - `npm run lint`
 - `npm run build`
 - Smoke test em navegador (preview + troca de idioma + persistência)
+
+---
+
+# 🌍 Release Notes - v2.1 - Cloudflare Geo-IP para Idioma (PT/EN/ES)
+
+## 📅 Data: 07/02/2026
+
+## ✨ Principais Mudanças
+
+### 1. ☁️ Detecção por país via Cloudflare (sem remover o seletor)
+- ✅ Quando o domínio está proxied no Cloudflare (ícone laranja), o app usa `/cdn-cgi/trace` (`loc=XX`) para escolher o idioma padrão na primeira visita.
+- ✅ Mantém o seletor manual de idioma e a preferência do usuário continua tendo prioridade.
+
+### 2. 🔧 Configuração opcional
+- ✅ `.env.example` com `VITE_ENABLE_CF_GEO_LANG` (padrão: `true`)
+
+## ✅ Testes e verificação
+- `npm ci`
+- `npm audit` (0 vulnerabilidades)
+- `npm run lint`
+- `npm run build`
+- Smoke test em navegador (preview + geo + troca de idioma + persistência)

@@ -21,7 +21,8 @@ const LanguageSwitcher = () => {
     } catch {
       // ignore
     }
-    document.cookie = `lang=${encodeURIComponent(lng)}; path=/; max-age=31536000`;
+    const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = `lang=${encodeURIComponent(lng)}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
   };
 
   return (

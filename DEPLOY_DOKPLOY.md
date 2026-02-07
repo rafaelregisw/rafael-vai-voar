@@ -36,14 +36,38 @@ Após o deploy, valide:
 
 1. Site acessível no domínio configurado
 2. Seletor de idioma (topo direito) funcionando
-3. Traduções disponíveis:
+3. Detecção automática por país (Cloudflare) funcionando
+4. Traduções disponíveis:
    - `/locales/pt/common.json`
    - `/locales/en/common.json`
    - `/locales/es/common.json`
+
+## 🌍 Idioma automático por país (Cloudflare)
+
+Se o seu domínio estiver com proxy do Cloudflare ativo (ícone laranja), o app consegue usar a geolocalização do Cloudflare para escolher o idioma padrão na **primeira visita** (quando o usuário ainda não escolheu um idioma).
+
+Como funciona:
+
+- O frontend faz `GET /cdn-cgi/trace`
+- Lê o `loc=XX` (código do país)
+- Define o idioma padrão:
+  - países lusófonos: `pt`
+  - países hispanohablantes: `es`
+  - demais: `en`
+
+O usuário sempre pode trocar o idioma manualmente pelo seletor.
+
+## 🔐 Variáveis de ambiente
+
+Não é necessário configurar variáveis de ambiente no Dokploy.
+
+Opcional (build-time, Vite):
+
+- `VITE_ENABLE_CF_GEO_LANG=true` (padrão)
+  - para desativar: `VITE_ENABLE_CF_GEO_LANG=false`
 
 ## 🔄 Atualizações
 
 1. Faça commit e push para a branch `main`
 2. O Dokploy detecta e faz o redeploy automaticamente
 3. Verifique o status e logs no painel do Dokploy
-

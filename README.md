@@ -64,7 +64,12 @@ npm run preview
 
 ## 🌍 Idiomas (i18n)
 
-O site detecta automaticamente o idioma do visitante (com fallback para `pt-BR`) e também permite escolher manualmente pelo seletor no canto superior direito.
+O site detecta automaticamente o idioma do visitante (com fallback para `pt`) e também permite escolher manualmente pelo seletor no canto superior direito.
+
+Detecção automática (ordem):
+1. Preferência salva (`localStorage` / cookie `lang`)
+2. Cloudflare Geo-IP (quando o domínio está proxied, orange cloud): usa `/cdn-cgi/trace` (`loc=XX`)
+3. Idioma do navegador (`navigator.language`)
 
 ### Arquivos de tradução
 
@@ -75,6 +80,9 @@ O site detecta automaticamente o idioma do visitante (com fallback para `pt-BR`)
 Preferência do usuário:
 - `localStorage`: `lang`
 - `cookie`: `lang`
+
+Configuração (opcional):
+- `.env.example`: `VITE_ENABLE_CF_GEO_LANG` (padrão: `true`)
 
 ## 📦 Estrutura do Projeto
 
